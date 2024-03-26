@@ -1,0 +1,22 @@
+header {
+  nav {
+    display: grid;
+    grid-template-columns: 30px auto 30px;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and (min-width: 600px) {
+      grid-template-columns: auto 223px;
+
+      .navMenus {
+        display: grid;
+        grid-template-columns: 110px 88px;
+        gap: 0 25px;
+      }
+    }
+  }
+
+  h1 svg {
+    margin-right: 5px;
+  }
+}

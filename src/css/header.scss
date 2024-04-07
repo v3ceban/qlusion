@@ -6,12 +6,26 @@ header {
     justify-content: space-between;
 
     @media screen and (min-width: 600px) {
+      grid-template-columns: auto 278px;
+
+      .navMenus {
+        display: grid;
+        grid-template-columns: 110px 88px 35px;
+        gap: 0 25px;
+      }
+    }
+
+    @media screen and (min-width: 800px) {
       grid-template-columns: auto 223px;
 
       .navMenus {
         display: grid;
         grid-template-columns: 110px 88px;
         gap: 0 25px;
+
+        span:last-of-type {
+          display: none;
+        }
       }
     }
   }

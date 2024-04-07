@@ -38,8 +38,9 @@ export default function Header() {
         Qlusion
       </h1>
       <section className="navMenus">
-        <Menu icon="fa-solid fa-pen" menu="menu" content="Register" />
+        <Menu icon="fa-solid fa-pen" menu="register" content="Register" />
         <Menu icon="fa-solid fa-right-to-bracket" menu="user" content="Login" />
+        <Menu icon="fa-solid fa-bars" menu="menu" />
       </section>
     </nav>
   );

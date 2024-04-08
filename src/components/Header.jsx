@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Menu from "./Menu";
+import MenuButton from "./MenuButton";
 import { useState, useEffect } from "react";
 
 export default function Header() {
@@ -22,12 +22,12 @@ export default function Header() {
 
   const MobileHeader = () => (
     <nav>
-      <Menu icon="fa-solid fa-bars" menu="menu" />
+      <MenuButton icon="fa-solid fa-bars" menu="menu" />
       <h1>
         <FontAwesomeIcon icon="fa-solid fa-rocket" />
         Qlusion
       </h1>
-      <Menu icon="fa-solid fa-user" menu="user" />
+      <MenuButton icon="fa-solid fa-user" menu="user" />
     </nav>
   );
 
@@ -38,9 +38,13 @@ export default function Header() {
         Qlusion
       </h1>
       <section className="navMenus">
-        <Menu icon="fa-solid fa-pen" menu="register" content="Register" />
-        <Menu icon="fa-solid fa-right-to-bracket" menu="user" content="Login" />
-        <Menu icon="fa-solid fa-bars" menu="menu" />
+        <MenuButton icon="fa-solid fa-pen" menu="register" content="Register" />
+        <MenuButton
+          icon="fa-solid fa-right-to-bracket"
+          menu="user"
+          content="Login"
+        />
+        <MenuButton icon="fa-solid fa-bars" menu="menu" />
       </section>
     </nav>
   );

@@ -16,18 +16,30 @@ export default function MenuButton(props) {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 800) {
-        setFiltersShown(false);
-      } else {
-        setFiltersShown(true);
-      }
+      setFiltersShown(window.innerWidth >= 800);
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      window.scrollTo(0, 0);
+    };
+
+    if (filtersShown && window.innerWidth < 800) {
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [filtersShown]);
 
   return (
     <>

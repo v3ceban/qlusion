@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DateContext } from "../providers/DateProvider";
 
 export default function Calendar() {
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth();
-  const years = [currentYear, currentYear + 1];
+  const { date, setDate } = useContext(DateContext);
+  const currentDate = date;
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+  const realYear = new Date().getFullYear();
+  const years = [realYear, realYear + 1];
   const months = [
     "January",
     "February",
@@ -22,7 +25,7 @@ export default function Calendar() {
 
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
-  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedDay, setSelectedDay] = useState(currentDate.getDate());
 
   const daysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -51,9 +54,11 @@ export default function Calendar() {
       days.push(
         <label
           key={i}
-          onClick={() => setSelectedDay(i)}
+          onClick={() => handleDayChange(i, selectedMonth, selectedYear)}
           className={
-            selectedDay === i
+            selectedDay === i &&
+              selectedMonth === currentDate.getMonth() &&
+              currentYear === currentDate.getFullYear()
               ? "active " + dayOfTheWeek(selectedMonth, selectedYear, i)
               : dayOfTheWeek(selectedMonth, selectedYear, i)
           }
@@ -65,14 +70,6 @@ export default function Calendar() {
       );
     }
     return days;
-  };
-
-  const handleMonthChange = (e) => {
-    setSelectedMonth(months.indexOf(e.target.value));
-  };
-
-  const handleYearChange = (e) => {
-    setSelectedYear(parseInt(e.target.value));
   };
 
   const calendarHeaders = () => {
@@ -92,11 +89,33 @@ export default function Calendar() {
     ));
   };
 
+  const handleMonthChange = (e) => {
+    setSelectedMonth(months.indexOf(e.target.value));
+  };
+
+  const handleYearChange = (e) => {
+    setSelectedYear(parseInt(e.target.value));
+  };
+
+  const handleDayChange = (day, month, year) => {
+    setSelectedDay(day);
+    setDate(new Date(year, month, day));
+  };
+
+  const changeToToday = (e) => {
+    e.preventDefault();
+    const today = new Date();
+    setSelectedMonth(today.getMonth());
+    setSelectedYear(today.getFullYear());
+    setSelectedDay(today.getDate());
+    setDate(today);
+  };
+
   return (
     <form method="POST" id="calendarForm">
       <select
         name="month"
-        defaultValue={months[currentMonth]}
+        value={months[selectedMonth]}
         onChange={handleMonthChange}
       >
         {months.map((month) => (
@@ -105,11 +124,7 @@ export default function Calendar() {
           </option>
         ))}
       </select>
-      <select
-        name="year"
-        defaultValue={currentYear}
-        onChange={handleYearChange}
-      >
+      <select name="year" value={selectedYear} onChange={handleYearChange}>
         {years.map((year) => (
           <option key={year} value={year}>
             {year}
@@ -120,6 +135,7 @@ export default function Calendar() {
         {calendarHeaders()}
         {generateDays()}
       </div>
+      <button onClick={changeToToday}>Today</button>
     </form>
   );
 }

@@ -51,6 +51,18 @@ main {
       max-width: fit-content;
       place-content: flex-start;
     }
+
+    @media screen and (min-width: 1240px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 1680px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (min-width: 2100px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
 
   .event {

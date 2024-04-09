@@ -1,13 +1,14 @@
-/* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { DateContext } from "../providers/DateProvider";
 import Event from "./Event";
 
-export default function Main(props) {
+export default function Main() {
+  const { date } = useContext(DateContext);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
     fetchEvents();
-  }, []);
+  }, [date]);
 
   const fetchEvents = async () => {
     try {
@@ -25,25 +26,27 @@ export default function Main(props) {
     }
   };
 
-  const today = new Date();
-  const isToday = props.date.getDate() === today.getDate();
-  const formattedDate = props.date.toLocaleDateString("en-US", {
+  const isToday = date.toDateString() === new Date().toDateString();
+  const formattedDate = date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "2-digit",
   });
 
+  const eventsToShow = events.filter((event) => event.date === formattedDate);
+
   return (
     <main>
       <h2>
-        {isToday ? "Today" : "Events For"}
-        <span className="date">{formattedDate}</span>
+        Events for
+        <span className="date">{` ${isToday ? "Today," : ""} ${formattedDate}`}</span>
       </h2>
       <section>
-        {events.length === 0 ? (
-          <h3>No events found for this day</h3>
+        {eventsToShow.length === 0 ? (
+          <p>Sorry, no events found for this day :(</p>
         ) : (
-          events.map((event, key) => <Event key={key} event={event} />)
+          // events.map((event, key) => <Event key={key} event={event} />) // show all events
+          eventsToShow.map((event, key) => <Event key={key} event={event} />) // show events for the day
         )}
       </section>
     </main>

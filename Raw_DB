@@ -1,0 +1,220 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 10, 2024 at 10:56 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `csv_db 6`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `spread_sheet____original_clubs`
+--
+
+CREATE TABLE `spread_sheet____original_clubs` (
+  `Category` varchar(23) DEFAULT NULL,
+  `Full Organization Name` varchar(66) DEFAULT NULL,
+  `RSO Nickname or Abbreviation` varchar(26) DEFAULT NULL,
+  `Social Contact/social media` varchar(46) DEFAULT NULL,
+  `Event/discription` varchar(32) DEFAULT NULL,
+  `Location` varchar(31) DEFAULT NULL,
+  ` Time` varchar(15) DEFAULT NULL,
+  `date` varchar(40) DEFAULT NULL,
+  `contact` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `spread_sheet____original_clubs`
+--
+
+INSERT INTO `spread_sheet____original_clubs` (`Category`, `Full Organization Name`, `RSO Nickname or Abbreviation`, `Social Contact/social media`, `Event/discription`, `Location`, ` Time`, `date`, `contact`) VALUES
+('Academic & Professional', 'Alpha Kappa Psi', 'AKPsi', 'IG: scuakpsi', '', '', '', '', 'prez: Jonathan Huang'),
+('Academic & Professional', 'American Society of Mechanical Engineers', 'ASME', 'IG: scuasme', '', '', '', '', 'prez: Máté Aranyosi; scu.asme@gmail.com '),
+('Academic & Professional', 'Black Business Association', 'BBA', '', 'weekly meeting ', 'Lucas', '7:00 - 8:00 PM', 'Monday ', ''),
+('Academic & Professional', 'Blueprints for Pangea', 'B4P', '', 'weekly meeting ', 'Kenna Hall', '', 'Tuesday', ''),
+('Academic & Professional', 'Communication Club', 'Comm Club', 'IG: scucommclub', '', '', '', '', ''),
+('Academic & Professional', 'Delta Epsilon Mu, Inc.', 'DEM, Inc.', 'x', '', '', '', '', ''),
+('Academic & Professional', 'Information Systems and Analytics Student Network', 'ISN', 'x: scu_isn', '', '', '', '', ''),
+('Academic & Professional', 'Model United Nations', 'MUN', 'IG: santaclaramodelun', '', '', '', 'Mondays', ''),
+('Academic & Professional', 'NeuroNexus', '', 'x', '', '', '', '', ''),
+('Academic & Professional', 'Neuroscience Club', 'Neuro Club', 'x: scuneuroclub', '', '', '', '', ''),
+('Academic & Professional', 'Pi Tau Sigma Mechanical Engineering Honor Society', 'Pi Tau Sigma', 'x', '', '', '', '', ''),
+('Academic & Professional', 'Pre-Physician Assistant Club', 'Pre-PA Club', 'x: scu_prepa', '', '', '', '', ''),
+('Academic & Professional', 'Public Health Club', '', 'x: scuphclub IG: scupublichealth', '', '', '', '', 'possibly reach out to department head(?)'),
+('Academic & Professional', 'Queer and Qualified', 'QQ', 'IG: qqscu', 'Weekly Meeting', 'Graham 163', '7:30 - 8:30 PM', 'Tuesday', ''),
+('Academic & Professional', 'Rho Psi Eta', '', 'x', '', '', '', '', ''),
+('Academic & Professional', 'Santa Clara Mock Trial', 'Mock Trial', 'x: santaclaramocktrial IG: santaclaramocktrial', '', '', '', '', 'prez: shivani; scumocktrial@scu.edu'),
+('Academic & Professional', 'Santa Clara University Accounting Association', 'SCUAA', '', '', '', '', '', ''),
+('Academic & Professional', 'SCU History Club', 'SCU History Club', 'x:scuhistoryclub IG: \nscuhistoryclub', '', '', '', '', ''),
+('Academic & Professional', 'SCU Pre-Dental Society', 'SCUDS', 'General meeting', 'Weekly Meeting ', '212 kenna', '6:30 PM', 'Tuesday', ''),
+('Academic & Professional', 'SCU Pre-Health Club', 'SCUPH', 'x: scu_prehealth_club', '', '', '', '', ''),
+('Academic & Professional', 'Society of Physics Students', 'SPS', 'x:scu.sps', '', '', '', '', ''),
+('Academic & Professional', 'Sociology Club', '', 'General meeting', 'Weekly Meeting', '3rd floor o\'connor', '5:30 PM', 'Monday', ''),
+('Academic & Professional', 'Student Chapter of the Association for Women in Mathematics at SCU', 'AWM', 'x:scu.awm; IG: scu.awm', '', '', '', '', 'prex: Anissa Fernandez'),
+('Academic & Professional', 'TEDxSantaClaraUniversity', 'TEDxSCU', 'x:tedx.scu', '', '', '', '', ''),
+('Academic & Professional', 'Women in Entrepreneurship', 'WiE', 'IG: scu.woman.entrep', '', '', '', '', ''),
+('Academic & Professional', 'Women in Physics', 'WiP', 'x:scu.wip', '', '', '', '', ''),
+('Academic & Professional', 'Women in STEM', 'WinSTEM', 'x:scuwinstem', '', '', '', '', 'prez: anika evans'),
+('', '', '', '', '', '', '', '', ''),
+('Business', 'Delta Sigma Pi', 'DSP', 'IG: scudsp', '', '', '', '', ''),
+('Business', 'Economics Student Association', 'ESA', 'IG: scueconomics', '*email them for schedule', '', '', '', ''),
+('Business', 'GetVirtual', '', 'IG: scugetvirtual', '', '', '', '', ''),
+('Business', 'Investment Club', 'IC', 'IG: scinvestmentfund', '', '', '', '', ''),
+('Business', 'LatinX Business Student Association', 'LBSA', 'ig: lbsa_scu', '', '', '', '', ''),
+('Business', 'Santa Clara Entrepreneurship Association', 'SCEA', 'IG: santaclaravca', '', '', '', '', ''),
+('Business', 'Phi Chi Theta', 'PCT', '', '', '', '', '', ''),
+('Business', 'Real Estate Association', 'REA', 'IG: scu_rea', '', '', '', '', ''),
+('Business', 'Retail Studies Student Association', 'RSSA', '', '', '', '', '', ''),
+('Business', 'Santa Clara Consulting', 'SCC', 'IG: scu_financeassociation', '', '', '', '', ''),
+('Business', 'Santa Clara Investment Banking Club', 'SCIBC', 'IG: scinvestmentfund', '', '', '', '', ''),
+('Business', 'Santa Clara Strategy', 'SCS', '', '', '', '', '', ''),
+('Business', 'Santa Clara University Sports Business', 'SCU Sports Business', 'IG: scusportsbusiness', '', '', '', '', ''),
+('Business', 'Santa Clara Venture Capital Association', 'SCVCA', '', '', '', '', '', ''),
+('Business', 'SCU Finance Association', '', '', '', '', '', '', ''),
+('Business', 'SCU Microfinance Association', 'MiFi', 'IG: scu_microfinance', 'Weekly Meeting', 'Kenna 105', '6:00 - 7:00 PM', 'Thursday', ''),
+('Business', 'SCU Women in Business', 'SCU WiB', 'IG: scu.wib', '', '', '', '', 'wib@scu.edu'),
+('Business', 'The Women\'s Network', 'TWN', 'IG: thewomensnetwork_santaclara', '', '', '', '', ''),
+('Business', 'Undergraduate Marketing Association', 'UMA', '', '', '', '', '', ''),
+('Business', 'Women In Investment', 'WIN', '', '', '', '', '', ''),
+('', '', '', '', '', '', '', '', ''),
+('Cultural', 'African Student Association', 'ASA', 'General Meeting', 'Weekly Metting', 'Shapell Lounge', '5:00 - 6:00 PM', 'Tuesday', ''),
+('Cultural', 'Armenian Student Association', 'ASA', '', '', '', '', '', ''),
+('Cultural', 'Asian & Pacific-Islander Student Union', 'APSU', 'General Meeting', 'Weekly Meeting', 'Multi Cultural Club MCC', '6:05 - 7:05  PM', 'Monday', ''),
+('Cultural', 'Barkada of SCU', 'Barkada', 'General Meeting', 'Weekly Meeting', 'Multi Cultural Club MCC', '7:10 - 8:10 PM', 'Tuesday', ''),
+('Cultural', 'Chinese Student Association', 'CSA', 'IG: scucsa', 'Weekly Meeting', 'Shapell Lounge', '7:10 - 8:10 PM', 'Monday', ''),
+('Cultural', 'Chinese Students and Scholars Association', 'CSSA', 'IG: scu_cssa', '', '', '', '', ''),
+('Cultural', 'Cultural Italian American Organization', 'CIAO Club', 'IG: scu_ciao', '', '', '', '', ''),
+('Cultural', 'French Club', 'Le Club', 'IG: scufrenchclub', '', '', '', '', ''),
+('Cultural', 'Hermanas Unidas de SCU', 'HaU', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '8:20 - 9:20 PM', 'Thursday', ''),
+('Cultural', 'Igwebuike', '', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '6:05 PM', 'Wednesday', ''),
+('Cultural', 'Taiwan', 'Tsa', 'IG: scu.tsa General Meeting', '', '', '', '', ''),
+('Cultural', 'International Student Club', 'ISC', 'IG: scu.isc', '', '', '', '', ''),
+('Cultural', 'Japanese Student Association', 'JSA', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '5:00 - 6:00 PM', 'Monday', ''),
+('Cultural', 'Ka Mana\'o O Hawai\'i', 'Hawaii Club', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '8:20 - 9:20 PM', 'Wednesday', ''),
+('Cultural', 'Korean Student Association of Santa Clara University', 'KSA', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '6:05 - 7:05 ', 'Thursday', ''),
+('Cultural', 'Latiné Student Union', 'LSU', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '8:20 - 9:20 PM', 'Tuesday', ''),
+('Cultural', 'Middle Eastern North African Club', 'MENA', 'IG: scumena', '', '', '', '', ''),
+('Cultural', 'Native American Coalition for Change', 'NACC', 'IG: klesis.scu', '', '', '', '', ''),
+('Cultural', 'Queer People of Color Associtation', 'QPOCA', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '5:00 PM', 'Wednesday', ''),
+('Cultural', 'Russian Speaking Club', 'RSC', 'IG: scu_rsc', '', '', '', '', ''),
+('Cultural', 'Salsa Clara De SCU', 'Salsa Clara', 'IG: salsaclarascu', '', '', '', '', ''),
+('Cultural', 'Together for Ladies of Color', 'TLC', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '5:00 - 6:00 PM', 'Thursday', ''),
+('Cultural', 'Undocumented Students And Allies Association', 'USAA', '', '', '', '', '', ''),
+('Cultural', 'Vietnamese Student Association', 'VSA', 'General Meeting', 'Weekly Meeting', 'Shapell Lounge', '6:05 - 7:05 PM', 'Tuesday ', ''),
+('Cultural', 'South Asian Undergrad Student Association', 'Intandesh', 'IG: intandesh.scu', 'Weekly Meeting', 'Shapell Lounge', '7:10 - 8:10 PM', 'Wednesday', ''),
+('', '', '', '', '', '', '', '', ''),
+('Engineering', 'AI Collaborate', 'AI', 'IG: scu_aicollab', '', '', '', '', ''),
+('Engineering', 'American Institute of Aeronautics and Astronautics SCU', 'AIAA SCU Chapter', 'IG: scuaiaa', '', '', '', '', ''),
+('Engineering', 'Associated General Contractors', 'AGC', 'IG: scuagc', '', '', '', '', ''),
+('Engineering', 'Association for Computing Machinery', 'ACM', 'IG: scu_acm', 'Weekly Meeting', '', '5:30 PM', 'Tuesday', ''),
+('Engineering', 'Association for Computing Machinery - Women’s Chapter', 'ACM-W', 'IG: scuacmw', 'Weekly Meeting', '', '6:00 - 6:30 PM', 'Wednesday', ''),
+('Engineering', 'Biomedical Engineering Society', 'BMES', 'General Meeting, IG:scubmes', 'Weekly Meeting', 'rooms vary on event', '7:00 PM', 'Thursday', ''),
+('Engineering', 'Engineers Without Borders', 'EWB', 'IG: ewb.scu', '', '', '', '', 'ewb@scu.edu'),
+('Engineering', 'Institute of Electrical and Electronics Engineers', 'IEEE', 'IG: scuieee', '', '', '', '', 'prez: anthony ryan'),
+('Engineering', 'National Society of Black Engineers', 'NSBE', 'IG: nsbescu, General Meetings', 'Weekly Meeting', 'Heafey 125', '7:15 PM', 'Monday', ''),
+('Engineering', 'Santa Clara Formula SAE', 'SCU FSAE', '', '', '', '', '', ''),
+('Engineering', 'SCU Maker Club', 'Maker Club', 'IG: scumakerclub', '', '', '', '', ''),
+('Engineering', 'Society of Hispanic Professional Engineers', 'SHPE', 'General Meeting, IG: shpe_scu', 'Weekly Meeting', 'SCDI ', '7:30 PM', 'Monday', ''),
+('Engineering', 'Society of Women Engineers', 'SWE', 'IG: scuswe', '', '', '', '', ''),
+('Engineering', 'Tau Beta Pi California Zeta Engineering Honor Society', 'Tau Beta Pi', 'IG: scu.tbp', '', '', '', '', ''),
+('Engineering', 'The American Society of Civil Engineers', 'ASCE', 'IG: scu_asce', '', '', '', 'Thursday', ''),
+('Engineering', 'Upsilon Epsilon Theta Tau', 'Theta Tau', 'IG: scuthetatau', '', '', '', '', ''),
+('', '', '', '', '', '', '', '', ''),
+('Faith-Based', 'Acts 2 Christian Fellowship', 'A2CF', 'IG: a2cf_scu', 'Weekly Meeting', 'Graham 164', '6:30 PM', 'Thursday', ''),
+('Faith-Based', 'Jewish Student Union', 'JSU', 'IG: jsuscu', '', '', '', '', ''),
+('Faith-Based', 'Klesis Christian Fellowship', 'Klesis', 'IG: klesis.scu', 'Monthly meetings + others events', 'SCDI 1301', '6:30 PM', 'Friday', ''),
+('Faith-Based', 'Muslim Student Association', 'MSA', 'IG: scumsa', 'Weekly Meeting', 'usually Graham Common Room', 'Afternoon', 'Monday', ''),
+('Faith-Based', 'New Life on Campus (Christian Fellowship)', 'NLOC', '', '', '', '', '', ''),
+('Faith-Based', 'SCU College Catholics', 'College Catholics', '', '', '', '', '', ''),
+('Faith-Based', 'SCU Young Life', 'SCU YL', '', '', 'Sobrato', '7:33-9pm', 'Tuesdays', ''),
+('Faith-Based', 'Sikh Student Association', 'SSA', '', '', '', '', '', ''),
+('', '', '', '', '', '', '', '', ''),
+('Performance Arts', 'Alpha Psi Omega', 'APO', 'IG: scuaphio', '', '', '', '', ''),
+('Performance Arts', 'Ballet Folklorico de SCU', 'Ballet Folklorico', 'IG: balletfolkloricodescu', 'Weekly Meeting', 'Dance Studio B', '7:00 - 9:00 PM', 'Sunday', ''),
+('Performance Arts', 'DayBreak K-Pop Dance Crew', 'DΔYBREΔK', 'IG: _daybreakofficial', 'Weekly Meeting', 'Graham 164', '6:00 - 7:00 PM', 'Wednesday', ''),
+('Performance Arts', 'Santa Clara Ballroom Dance Association', 'BDA', 'IG: scu.ballroom.dance', '', '', '', '', ''),
+('Performance Arts', 'Santa Clara Scriptless', 'SCU Improv', 'IG: improvscu', '', '', '', '', 'prez: Elodie Torres'),
+('Performance Arts', 'SCU A Cappella', 'SCU A Cappella', 'IG: scuacappella', '', '', '', '', 'prez: Rithi Jayam (maybe)'),
+('Performance Arts', 'SCU Hipnotik', 'Hipnotik', '', '', '', '', '', ''),
+('Performance Arts', 'SCU Stand-Up Comedy Club', 'SCU-SUCC', 'IG: scu_succ', 'Weekly Meeting', 'Kenna 111', '7:00 PM', 'Thursday', ''),
+('', '', '', '', '', '', '', '', ''),
+('Recreational', 'Card Game Club', 'CGC', '', '', '', '', '', ''),
+('Recreational', 'Psychology Club', 'Psych Club', '', '', '', '', '', ''),
+('Recreational', 'Santa Clara Gaming & Esports', 'SCU Esports', 'IG: scuesports', '', '', '', '', ''),
+('Recreational', 'Santa Clara Rock Climbing Club', 'SCRCC', 'IG: scu_rockclimbing', '', '', '', '', ''),
+('Recreational', 'Santa Clara Boxing', 'SCU Boxing Club', 'IG: santaclaraboxing\nPractice Schedule', 'Weekly Meeting', 'Malley Center Basketball Courts', '5:30 - 7:00 PM', 'Monday-Thursay', ''),
+('Recreational', 'Santa Clara Spikeball', 'Spikeball Club', '', '', '', '', '', ''),
+('Recreational', 'Santa Clara Surf Club', 'SCU Surf Club', 'IG: scusurfclub', '', '', '', '', ''),
+('Recreational', 'Santa Clara University Billiards Club', 'SCU Billiards Club', '', '', '', '', '', ''),
+('Recreational', 'Sco Cos Water Polo', 'Sco Cos Wopo', '', '', '', '', '', ''),
+('Recreational', 'SCU Barbell', 'Barbell', 'IG: scubarbell\n', 'Weekly Meeting', '', 'Afternoon', 'Wednesday ', ''),
+('Recreational', 'SCU Brazilian Jiu Jitsu', 'SCU BJJ', '', '', '', '', '', ''),
+('Recreational', 'SCU CHAARG', 'SCU CHAARG', 'IG: santaclarauniversity_inchaarg', 'Weekly Meeting', '', '', 'Tuesday, Wednesday, or Thursday evenings', ''),
+('Recreational', 'SCU Ladies Run The World', 'SCU Ladies Run Club', 'IG: scu_ladiesrunclub\n', '', '', '', '', ''),
+('Recreational', 'SCU Pokemon', '', 'IG: scupokemonclub', '', '', '', '', ''),
+('Recreational', 'SCU Ski and Snowboard Club', '', 'IG: scuskiclub', '', '', '', '', ''),
+('Recreational', 'Survivor: Santa Clara', '', '', '', '', '', '', ''),
+('', '', '', '', '', '', '', '', ''),
+('Service', 'Alpha Phi Omega', '', '', '', '', '', '', ''),
+('Service', 'Be the Match On Campus', 'BTMOC', '', '', '', '', '', ''),
+('Service', 'Belles Service Organization', 'Belles', 'IG: scubelles', '', '', '', '', ''),
+('Service', 'Camp Kesem at Santa Clara University', 'Kesem at SCU', 'General Meeting', 'Weekly Meeting', 'Kenna', '7:30 PM', 'Thursday', ''),
+('Service', 'Future Child Advocates', 'FCA', 'IG: scufuturechildadvocates', 'Weekly Meeting', 'Kenna', '6:00 PM', 'Thursday', ''),
+('Service', 'Partnership for Animal Welfare and Support', 'PAWS', 'IG: pawsscu', 'Weekly Meeting', 'Alumni Science Hall 101', '5:30 - 6:30 PM', 'Wednesday', ''),
+('Service', 'Recipes for Relief, at JW House Santa Clara', 'Recipes for Relief', '', '', '', '', '', ''),
+('Service', 'SCU Red Cross Club', 'RCC', 'IG: scu_redcross', '', '', '', '', ''),
+('Service', 'Shanti Bhavan', 'SB', '', '', '', '', '', ''),
+('Service', 'Sprout Up', '', 'IG: sproutup_scu', '', '', '', '', ''),
+('Service', 'Surfrider SCU Chapter', '', 'IG: scusurfclub', '', '', '', '', ''),
+('', '', '', '', '', '', '', '', ''),
+('Social Justice', 'Grass Roots Environmental Efforts Now Team', 'GREEN Team', '', '', '', '', '', ''),
+('Social Justice', 'Oceans and Rivers Conservation Alliance', 'ORCA', '', '', '', '', '', ''),
+('Social Justice', 'Partners in Health Engage', 'PIHE', '', '', '', '', '', ''),
+('Social Justice', 'Santa Clara Sunrise', 'Sunrise', 'IG: scusunrisehub', '', '', '', '', ''),
+('Social Justice', 'SCU Broncos for Life', 'Broncos for LIfe', 'IG: scubroncosforlife Monthly Meetings', 'Weekly Meeting', 'Campus Ministry', '6:30 PM', 'Wednesday', ''),
+('Social Justice', 'Students for Sensible Drug Policy', 'SSDP', 'IG: scussdp', '', '', '', '', ''),
+('', '', '', '', '', '', '', '', ''),
+('Special Interest', 'Bread Lover\'s Club', '', 'IG: scubreadclub', '', '', '', '', ''),
+('Special Interest', 'Clara Craft Club', '', 'IG: claracraftclub', 'Weekly Meeting', 'McWalsh Classroom', '5:50 - 6:30 PM', 'Thursday', ''),
+('Special Interest', 'Commuter Student Union', 'CSU', 'IG: scucommuters', '', '', '', '', ''),
+('Special Interest', 'Ethnic Studies Club', '', 'IG: scuethnicstudiesclub', '', '', '', '', ''),
+('Special Interest', 'Ignite SCU', 'Ignite', 'IG: ignitescu', '', '', '', '', ''),
+('Special Interest', 'Japanime', '', 'IG: scu_japanime', 'Weekly Meeting', 'Alameda 103', '6:30 - 8:30 PM', 'Friday', ''),
+('Special Interest', 'Santa Clara Student Art League', 'SCUSAL', 'IG: scu_artleague', '', '', '', '', ''),
+('Special Interest', 'Santa Clara University Filmmakers\' Club', 'SCU Filmmakers\' Club', 'IG: scufilmmakersclub', 'Weekly Meeting', 'Vari 135', '7:00 - 8:00 PM', 'Thursday', ''),
+('Special Interest', 'Santa Clara University Mindfulness Club', 'Mindfulness Club', 'IG: scumindfulness', '', '', '', '', ''),
+('Special Interest', 'Santa Clara University Painting Club', 'SSCUPC / SCU painting club', 'IG: scupaintingclub', 'Weekly Meeting', 'room 320 in Dowd', '6:00 - 7:00 PM', 'Thursday', ''),
+('Special Interest', 'Santa Clara University Pre Law Society', 'SCU Pre Law', 'IG: scuprelawsociety', '', '', '', '', ''),
+('Special Interest', 'SCU Chess Club', '', 'IG: scuchess', '', '', '', '', ''),
+('Special Interest', 'SCU Fashion Club', 'SCU FC', 'IG: scu.fashion', '', '', '', '', ''),
+('Special Interest', 'SCU Harry Potter Club', 'SCU HPC', 'IG: scuharrypotterclub', '', '', '', '', ' scuharrypotterclub@gmail.com'),
+('Special Interest', 'SCU Motorsport (SCU Car Club)', 'SCU Motorsport', 'IG: scumotorsport', '', '', '', 'Saturday , Sunday', ''),
+('Special Interest', 'Skate club', '', 'IG: scuskate', '', '', '', '', ''),
+('Special Interest', 'The Books and Tea Club', '', 'IG: scubooksandtea', ' Weekly Meeting', 'library', '7:00 - 8:00 PM', 'Monday', ''),
+('Special Interest', 'The Bronco Academy of Mentorship', 'BAM', '', '', '', '', '', ''),
+('Special Interest', 'Video Game Development Club', 'VGDC', '', '', '', '', '', ''),
+('Special Interest', 'Santa Clara University Photography Club', 'SCU Photo Club', 'IG: scu_photography', 'Weekly Meeting', ' Dowd 310', '6:00 PM', 'Tuesday', ''),
+('', '', '', '', '', '', '', '', ''),
+('', '', '', '', '', '', '', '', ''),
+('Sports', '', '', '', '', '', '', '', '');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

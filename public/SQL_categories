@@ -1,0 +1,3 @@
+SELECT category
+FROM events
+WHERE category = 'business';

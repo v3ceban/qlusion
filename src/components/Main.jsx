@@ -12,7 +12,7 @@ export default function Main() {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("/events.json"); // static events. should either be fetched from backend/API
+      const response = await fetch("/events.php"); // static events. should either be fetched from backend/API
       if (!response.ok) {
         throw new Error(
           `Error fetching events: ${response.status}, ${response.statusText}`,

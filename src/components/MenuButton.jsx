@@ -2,13 +2,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import FiltersMenu from "./FiltersMenu";
+import LoginMenu from "./LoginMenu";
 
 export default function MenuButton(props) {
-  const [filtersShown, setFiltersShown] = useState(false);
+  const [filtersMenu, setFiltersMenu] = useState(false);
+  const [loginMenu, setLoginMenu] = useState(false);
 
   function toggleMenu(menu) {
     if (menu === "menu") {
-      setFiltersShown(!filtersShown);
+      setFiltersMenu(!filtersMenu);
+    } else if (menu === "login") {
+      setLoginMenu(!loginMenu);
     } else {
       console.log(menu);
     }
@@ -16,7 +20,7 @@ export default function MenuButton(props) {
 
   useEffect(() => {
     const handleResize = () => {
-      setFiltersShown(window.innerWidth >= 800);
+      setFiltersMenu(window.innerWidth >= 800);
     };
 
     handleResize();
@@ -27,26 +31,12 @@ export default function MenuButton(props) {
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      window.scrollTo(0, 0);
-    };
-
-    if (filtersShown && window.innerWidth < 800) {
-      window.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [filtersShown]);
-
   return (
     <>
       <span className="menu" onClick={() => toggleMenu(props.menu)}>
         <FontAwesomeIcon
           icon={
-            filtersShown && props.menu === "menu"
+            filtersMenu && props.menu === "menu"
               ? "fa-solid fa-xmark"
               : props.icon
           }
@@ -55,7 +45,10 @@ export default function MenuButton(props) {
         />
         {props.content && props.content}
       </span>
-      {filtersShown && props.menu === "menu" && <FiltersMenu />}
+      {filtersMenu && props.menu === "menu" && (
+        <FiltersMenu setFiltersMenu={setFiltersMenu} />
+      )}
+      {loginMenu && props.menu === "login" && <LoginMenu />}
     </>
   );
 }

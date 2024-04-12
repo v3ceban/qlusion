@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(true);
+  // const [filtersMenu, setFiltersMenu] = useState(false);
+  // const [loginMenu, setLoginMenu] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,7 +29,7 @@ export default function Header() {
         <FontAwesomeIcon icon="fa-solid fa-rocket" />
         Qlusion
       </h1>
-      <MenuButton icon="fa-solid fa-user" menu="user" />
+      <MenuButton icon="fa-solid fa-user" menu="login" />
     </nav>
   );
 
@@ -41,7 +43,7 @@ export default function Header() {
         <MenuButton icon="fa-solid fa-pen" menu="register" content="Register" />
         <MenuButton
           icon="fa-solid fa-right-to-bracket"
-          menu="user"
+          menu="login"
           content="Login"
         />
         <MenuButton icon="fa-solid fa-bars" menu="menu" />

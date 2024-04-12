@@ -23,6 +23,8 @@ export default function Event(props) {
       </ul>
       <div className="cta-container">
         <img src={"/img/" + event.image} alt={event.title} />
+        {/* needs to check if user is logged in and redirect to login if not,
+        otherwise render event registration component */}
         <button>Sign-up</button>
       </div>
       <p>{event.short_description}</p>

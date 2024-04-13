@@ -32,19 +32,19 @@ export default function MenuButton(props) {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      window.scrollTo(0, 0);
-    };
-
     const disableScroll = (filtersMenu && window.innerWidth < 800) || loginMenu;
 
     if (disableScroll) {
-      window.addEventListener("scroll", handleScroll);
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
+      document.querySelector("main").style.display = "none";
     }
 
     return () => {
       if (disableScroll) {
-        window.removeEventListener("scroll", handleScroll);
+        document.body.style.overflow = "auto";
+        document.body.style.height = "auto";
+        document.querySelector("main").style.display = "block";
       }
     };
   }, [filtersMenu, loginMenu]);

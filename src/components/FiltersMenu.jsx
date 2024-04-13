@@ -118,7 +118,7 @@ export default function FiltersMenu(props) {
     }
   };
   return (
-    <aside className="asideMenu container">
+    <aside className="asideMenu container filters">
       <h3>Sort Events</h3>
       <p>Select the events you want to see</p>
       <form method="POST" id="calendarForm">

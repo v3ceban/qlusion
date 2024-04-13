@@ -8,13 +8,20 @@
   background: $background;
   padding-top: calc(84px + 1.5 * 38px);
 
-  @media screen and (min-width: 800px) {
-    top: 244px;
-    left: initial;
-    right: 30px;
-    width: 330px;
-    padding-top: 15px;
-    min-height: auto;
+  &.filters {
+    @media screen and (min-width: 800px) {
+      top: 244px;
+      left: initial;
+      right: 30px;
+      width: 330px;
+      padding-top: 15px;
+      min-height: auto;
+    }
+  }
+
+  &.login {
+    z-index: 2;
+    height: 100dvh;
   }
 
   h3 {

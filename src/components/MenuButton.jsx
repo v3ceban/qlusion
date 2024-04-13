@@ -31,6 +31,24 @@ export default function MenuButton(props) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      window.scrollTo(0, 0);
+    };
+
+    const disableScroll = (filtersMenu && window.innerWidth < 800) || loginMenu;
+
+    if (disableScroll) {
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (disableScroll) {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [filtersMenu, loginMenu]);
+
   return (
     <>
       <span className="menu" onClick={() => toggleMenu(props.menu)}>

@@ -1,8 +1,12 @@
 export default function LoginMenu() {
   return (
-    <aside className="asideMenu container">
+    <aside className="asideMenu container login">
       <h3>Login</h3>
-      <form method="POST">
+      <form
+        method="POST"
+        className="login"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <label>
           Email:
           <input type="email" />

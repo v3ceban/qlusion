@@ -87,6 +87,10 @@ main {
       max-width: 400px;
     }
 
+    @media screen and (min-width: 800px) {
+      min-width: 100%;
+    }
+
     &:hover {
       box-shadow:
         -1px -1px 4px darken(#fcfcfc, 5%),

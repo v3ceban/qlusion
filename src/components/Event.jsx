@@ -5,24 +5,33 @@ export default function Event(props) {
   const event = props.event;
   return (
     <article className="event">
-      <h3>{event.title}</h3>
+      <h3>{event.club_name}</h3>
       <ul>
-        <li>{event.club_name}</li>
+        <li>{event.club_category}</li>
         <li>
           <FontAwesomeIcon icon="fa-solid fa-calendar" fixedWidth />
-          {event.date}
+          {event.event_date}
         </li>
         <li>
           <FontAwesomeIcon icon="fa-solid fa-clock" fixedWidth />
-          {event.time_from} - {event.time_to}
+          {event.event_time}
         </li>
-        <li>
-          <FontAwesomeIcon icon="fa-solid fa-location-arrow" fixedWidth />
-          {event.location}
-        </li>
+        {event.event_location && (
+          <li>
+            <FontAwesomeIcon icon="fa-solid fa-location-arrow" fixedWidth />
+            {event.event_location}
+          </li>
+        )}
       </ul>
       <div className="cta-container">
-        <img src={"/img/" + event.image} alt={event.title} />
+        <img
+          src={
+            event.club_picture
+              ? "/img/" + event.club_picture
+              : "/img/default.jpg"
+          }
+          alt={event.club_name}
+        />
         {/* needs to check if user is logged in and redirect to login if not,
         otherwise render event registration component */}
         <button>Sign-up</button>

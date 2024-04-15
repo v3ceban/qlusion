@@ -37,8 +37,14 @@ main {
       cursor: pointer;
     }
 
-    a:hover {
+    a.inactive {
+      opacity: 0.5;
+    }
+
+    a:hover,
+    a.inactive:hover {
       text-decoration: none;
+      opacity: 1;
     }
   }
 
@@ -61,20 +67,36 @@ main {
     gap: 30px;
 
     @media screen and (min-width: 800px) {
-      max-width: fit-content;
+      max-width: 400px;
       place-content: flex-start;
     }
 
     @media screen and (min-width: 1240px) {
+      max-width: 830px;
       grid-template-columns: 1fr 1fr;
     }
 
     @media screen and (min-width: 1680px) {
+      max-width: 1260px;
       grid-template-columns: 1fr 1fr 1fr;
     }
 
     @media screen and (min-width: 2100px) {
+      max-width: 1690px;
       grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    iframe {
+      grid-column: 1 / -1;
+      min-width: 400px;
+      border-radius: 5px;
+      box-shadow:
+        -1px -1px 4px #fcfcfc,
+        2px 2px 4px #ccd0da;
+
+      &.hidden {
+        display: none;
+      }
     }
   }
 

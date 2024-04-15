@@ -55,14 +55,31 @@ export default function Main() {
             Clubs
           </a>
         </nav>
-        <span className="date">{` ${isToday ? "Today" : dayOfWeek}, ${formattedDate}`}</span>
+        <span
+          className="date"
+          style={mainContent !== "events" ? { visibility: "hidden" } : {}}
+        >{` ${isToday ? "Today" : dayOfWeek}, ${formattedDate}`}</span>
       </h2>
       <section>
-        {events.length === 0 ? (
-          <p>Sorry, no events found for this day :(</p>
-        ) : (
-          events.map((event, key) => <Event key={key} event={event} />)
-        )}
+        {mainContent === "events" && (
+          <>
+            {events.length === 0 ? (
+              <p>
+                Sorry, no events found for this day, <br />
+                Try selecting a different day in the calendar
+              </p>
+            ) : (
+              events.map((event, key) => <Event key={key} event={event} />)
+            )}
+          </>
+        )}{" "}
+        <iframe
+          className={mainContent !== "clubs" ? "hidden" : ""}
+          src="https://airtable.com/embed/appe9g0nayQGaEwk3/shr0cCfcwDyg7lRur?viewControls=on"
+          frameBorder="0"
+          width="100%"
+          height="675"
+        ></iframe>
       </section>
     </main>
   );

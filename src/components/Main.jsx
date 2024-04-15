@@ -50,6 +50,16 @@ export default function Main() {
           events.map((event, key) => <Event key={key} event={event} />)
         )}
       </section>
+      <section className="airtable">
+        <h3>Club Navigator</h3>
+        <iframe
+          className="airtable-embed"
+          src="https://airtable.com/embed/appe9g0nayQGaEwk3/shr0cCfcwDyg7lRur?viewControls=on"
+          frameBorder="0"
+          width="100%"
+          height="533"
+        ></iframe>
+      </section>
     </main>
   );
 }

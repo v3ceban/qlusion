@@ -28,6 +28,18 @@ main {
     text-transform: initial;
     font-weight: 400;
     font-size: 16px;
+    margin-top: 5px;
+  }
+
+  nav {
+    a {
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
   }
 
   ul {
@@ -139,25 +151,6 @@ main {
         max-width: 150px;
         margin-bottom: 0;
       }
-    }
-  }
-
-  .airtable {
-    display: block;
-    max-width: 100%;
-    margin: 20px 0;
-
-    h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    iframe {
-      border-radius: 5px;
-      box-shadow:
-        -1px -1px 4px #fcfcfc,
-        2px 2px 4px #ccd0da;
-      max-width: calc(100% - 350px);
     }
   }
 }

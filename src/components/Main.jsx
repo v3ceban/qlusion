@@ -5,15 +5,16 @@ import Event from "./Event";
 export default function Main() {
   const { date } = useContext(DateContext);
   const [events, setEvents] = useState([]);
+  const [mainContent, setMainContent] = useState("events");
   const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         // production
-        const response = await fetch("/events.php?day=" + dayOfWeek);
+        // const response = await fetch("/events.php?day=" + dayOfWeek);
         // local development
-        // const response = await fetch("/data.json");
+        const response = await fetch("/data.json");
         if (!response.ok) {
           throw new Error(
             `Error fetching events: ${response.status}, ${response.statusText}`,
@@ -40,7 +41,20 @@ export default function Main() {
   return (
     <main>
       <h2>
-        Events for
+        <nav>
+          <a
+            className={`mainNav ${mainContent !== "events" ? "inactive" : ""}`}
+            onClick={() => setMainContent("events")}
+          >
+            Events
+          </a>
+          <a
+            className={`mainNav ${mainContent !== "clubs" ? "inactive" : ""}`}
+            onClick={() => setMainContent("clubs")}
+          >
+            Clubs
+          </a>
+        </nav>
         <span className="date">{` ${isToday ? "Today" : dayOfWeek}, ${formattedDate}`}</span>
       </h2>
       <section>
@@ -49,16 +63,6 @@ export default function Main() {
         ) : (
           events.map((event, key) => <Event key={key} event={event} />)
         )}
-      </section>
-      <section className="airtable">
-        <h3>Club Navigator</h3>
-        <iframe
-          className="airtable-embed"
-          src="https://airtable.com/embed/appe9g0nayQGaEwk3/shr0cCfcwDyg7lRur?viewControls=on"
-          frameBorder="0"
-          width="100%"
-          height="533"
-        ></iframe>
       </section>
     </main>
   );

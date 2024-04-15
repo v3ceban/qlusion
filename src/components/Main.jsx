@@ -12,9 +12,9 @@ export default function Main() {
     const fetchEvents = async () => {
       try {
         // production
-        // const response = await fetch("/events.php?day=" + dayOfWeek);
+        const response = await fetch("/events.php?day=" + dayOfWeek);
         // local development
-        const response = await fetch("/data.json");
+        // const response = await fetch("/data.json");
         if (!response.ok) {
           throw new Error(
             `Error fetching events: ${response.status}, ${response.statusText}`,

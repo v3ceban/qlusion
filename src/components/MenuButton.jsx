@@ -11,7 +11,7 @@ export default function MenuButton(props) {
   function toggleMenu(menu) {
     if (menu === "menu") {
       setFiltersMenu(!filtersMenu);
-    } else if (menu === "login") {
+    } else if (menu === "login" || menu === "register") {
       setLoginMenu(!loginMenu);
     } else {
       console.log(menu);
@@ -66,7 +66,7 @@ export default function MenuButton(props) {
       {filtersMenu && props.menu === "menu" && (
         <FiltersMenu setFiltersMenu={setFiltersMenu} />
       )}
-      {loginMenu && props.menu === "login" && <LoginMenu />}
+      {loginMenu && <LoginMenu menu={props.menu} />}
     </>
   );
 }

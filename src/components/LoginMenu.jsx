@@ -9,13 +9,15 @@ export default function LoginMenu() {
       >
         <label>
           Email:
-          <input type="email" />
+          <input type="email" placeholder="email@example.com" />
         </label>
         <label>
           Password:
-          <input type="password" />
+          <input type="password" placeholder="********" />
         </label>
-        <a href="#">Forgot password?</a>
+        <a href="#" className="forgotPassword">
+          Forgot password?
+        </a>
         <button type="submit">Submit</button>
       </form>
     </aside>

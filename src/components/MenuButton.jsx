@@ -2,19 +2,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import FiltersMenu from "./FiltersMenu";
-import LoginMenu from "./LoginMenu";
 
 export default function MenuButton(props) {
   const [filtersMenu, setFiltersMenu] = useState(false);
-  const [userMenu, setUserMenu] = useState(false);
-
-  function toggleMenu(menu) {
-    if (menu === "menu") {
-      setFiltersMenu(!filtersMenu);
-    } else if (menu === "user") {
-      setUserMenu(!userMenu);
-    }
-  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,7 +20,8 @@ export default function MenuButton(props) {
   }, []);
 
   useEffect(() => {
-    const disableScroll = (filtersMenu && window.innerWidth < 800) || userMenu;
+    const disableScroll =
+      (filtersMenu && window.innerWidth < 800) || props.loginMenu;
 
     if (disableScroll) {
       document.body.style.overflow = "hidden";
@@ -45,11 +36,21 @@ export default function MenuButton(props) {
         document.querySelector("main").style.display = "block";
       }
     };
-  }, [filtersMenu, userMenu]);
+  }, [filtersMenu, props.loginMenu]);
 
   return (
     <>
-      <span className="menu" onClick={() => toggleMenu(props.menu)}>
+      <span
+        className="menu"
+        onClick={() => {
+          if (props.menu === "login" || props.menu === "register") {
+            props.toggleLoginMenu();
+            props.setWhichMenu(props.menu);
+          } else if (!props.loginMenu) {
+            setFiltersMenu(!filtersMenu);
+          }
+        }}
+      >
         <FontAwesomeIcon
           icon={
             filtersMenu && props.menu === "menu"
@@ -64,7 +65,6 @@ export default function MenuButton(props) {
       {filtersMenu && props.menu === "menu" && (
         <FiltersMenu setFiltersMenu={setFiltersMenu} />
       )}
-      {userMenu && <LoginMenu menu={props.menu} />}
     </>
   );
 }

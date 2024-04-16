@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(true);
-  // const [filtersMenu, setFiltersMenu] = useState(false);
-  // const [loginMenu, setLoginMenu] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {

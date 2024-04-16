@@ -6,15 +6,13 @@ import LoginMenu from "./LoginMenu";
 
 export default function MenuButton(props) {
   const [filtersMenu, setFiltersMenu] = useState(false);
-  const [loginMenu, setLoginMenu] = useState(false);
+  const [userMenu, setUserMenu] = useState(false);
 
   function toggleMenu(menu) {
     if (menu === "menu") {
       setFiltersMenu(!filtersMenu);
-    } else if (menu === "login" || menu === "register") {
-      setLoginMenu(!loginMenu);
-    } else {
-      console.log(menu);
+    } else if (menu === "user") {
+      setUserMenu(!userMenu);
     }
   }
 
@@ -32,7 +30,7 @@ export default function MenuButton(props) {
   }, []);
 
   useEffect(() => {
-    const disableScroll = (filtersMenu && window.innerWidth < 800) || loginMenu;
+    const disableScroll = (filtersMenu && window.innerWidth < 800) || userMenu;
 
     if (disableScroll) {
       document.body.style.overflow = "hidden";
@@ -47,7 +45,7 @@ export default function MenuButton(props) {
         document.querySelector("main").style.display = "block";
       }
     };
-  }, [filtersMenu, loginMenu]);
+  }, [filtersMenu, userMenu]);
 
   return (
     <>
@@ -66,7 +64,7 @@ export default function MenuButton(props) {
       {filtersMenu && props.menu === "menu" && (
         <FiltersMenu setFiltersMenu={setFiltersMenu} />
       )}
-      {loginMenu && <LoginMenu menu={props.menu} />}
+      {userMenu && <LoginMenu menu={props.menu} />}
     </>
   );
 }

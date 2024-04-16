@@ -1,7 +1,8 @@
-export default function LoginMenu() {
+/* eslint-disable react/prop-types */
+export default function LoginMenu(props) {
   return (
     <aside className="asideMenu container login">
-      <h3>Login</h3>
+      <h3>{props.menu}</h3>
       <form
         method="POST"
         className="login"

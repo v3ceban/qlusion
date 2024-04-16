@@ -48,6 +48,18 @@ export default function LoginMenu(props) {
         Confirm Password:
         <input type="password" placeholder="********" />
       </label>
+      <label className="admin">
+        <span>
+          Club Admin
+          <a
+            title="Click here if you are a club admin. Additional verification may be required."
+            className="moreinfo"
+          >
+            ?
+          </a>
+        </span>
+        <input type="checkbox" />
+      </label>
       <button type="submit">Submit</button>
       <button
         className="danger"

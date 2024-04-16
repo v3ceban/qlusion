@@ -36,6 +36,14 @@
       button {
         max-width: 400px;
       }
+
+      button {
+        margin: 20px 0;
+
+        &:first-of-type {
+          margin-top: 40px;
+        }
+      }
     }
 
     label {
@@ -56,6 +64,19 @@
       text-align: right;
       margin-bottom: 20px;
       font-size: 14px;
+    }
+
+    .forgot {
+      margin-bottom: 30px;
+    }
+
+    .prompt {
+      text-align: center;
+      font-size: 15px;
+
+      a {
+        font-style: italic;
+      }
     }
   }
 

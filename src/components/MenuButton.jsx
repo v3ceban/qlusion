@@ -43,8 +43,8 @@ export default function MenuButton(props) {
       <span
         className="menu"
         onClick={() => {
-          if (props.menu === "login" || props.menu === "register") {
-            props.toggleLoginMenu();
+          if (props.menu === "login" || props.menu === "sign-up") {
+            props.setLoginMenu(true);
             props.setWhichMenu(props.menu);
           } else if (!props.loginMenu) {
             setFiltersMenu(!filtersMenu);

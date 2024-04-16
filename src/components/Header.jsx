@@ -23,10 +23,6 @@ export default function Header() {
     };
   }, []);
 
-  const toggleLoginMenu = () => {
-    setLoginMenu(!loginMenu);
-  };
-
   const MobileHeader = () => (
     <nav>
       <MenuButton icon="fa-solid fa-bars" menu="menu" loginMenu={loginMenu} />
@@ -37,7 +33,7 @@ export default function Header() {
       <MenuButton
         icon="fa-solid fa-user"
         menu="login"
-        toggleLoginMenu={toggleLoginMenu}
+        setLoginMenu={setLoginMenu}
         loginMenu={loginMenu}
         setWhichMenu={setWhichMenu}
       />
@@ -53,9 +49,9 @@ export default function Header() {
       <section className="navMenus">
         <MenuButton
           icon="fa-solid fa-pen"
-          menu="register"
-          content="Register"
-          toggleLoginMenu={toggleLoginMenu}
+          menu="sign-up"
+          content="Sign-up"
+          setLoginMenu={setLoginMenu}
           loginMenu={loginMenu}
           setWhichMenu={setWhichMenu}
         />
@@ -63,7 +59,7 @@ export default function Header() {
           icon="fa-solid fa-right-to-bracket"
           menu="login"
           content="Login"
-          toggleLoginMenu={toggleLoginMenu}
+          setLoginMenu={setLoginMenu}
           loginMenu={loginMenu}
           setWhichMenu={setWhichMenu}
         />
@@ -75,7 +71,13 @@ export default function Header() {
   return (
     <header>
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
-      {loginMenu && <LoginMenu menu={whichMenu} />}
+      {loginMenu && (
+        <LoginMenu
+          menu={whichMenu}
+          setLoginMenu={setLoginMenu}
+          setWhichMenu={setWhichMenu}
+        />
+      )}
     </header>
   );
 }

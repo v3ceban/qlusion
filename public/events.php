@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "vceban";
 $password = "Qlusion2024!";
-$database = "i9835819_nmzt1";
+$database = "Clubs_SCU";
 $clubs = [];
 
 if (isset($_GET["day"])) {

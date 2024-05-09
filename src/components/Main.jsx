@@ -1,20 +1,21 @@
 import { useState, useEffect, useContext } from "react";
 import { DateContext } from "../providers/DateProvider";
+import { MainContext } from "../providers/MainContent";
 import Event from "./Event";
 
 export default function Main() {
   const { date } = useContext(DateContext);
   const [events, setEvents] = useState([]);
-  const [mainContent, setMainContent] = useState("events");
+  const { mainContent } = useContext(MainContext);
   const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         // production
-        const response = await fetch("/events.php?day=" + dayOfWeek);
+        // const response = await fetch("/events.php?day=" + dayOfWeek);
         // local development
-        // const response = await fetch("/data.json");
+        const response = await fetch("/data.json");
         if (!response.ok) {
           throw new Error(
             `Error fetching events: ${response.status}, ${response.statusText}`,
@@ -41,20 +42,7 @@ export default function Main() {
   return (
     <main>
       <h2>
-        <nav>
-          <a
-            className={`mainNav ${mainContent !== "events" ? "inactive" : ""}`}
-            onClick={() => setMainContent("events")}
-          >
-            Events
-          </a>
-          <a
-            className={`mainNav ${mainContent !== "clubs" ? "inactive" : ""}`}
-            onClick={() => setMainContent("clubs")}
-          >
-            Clubs
-          </a>
-        </nav>
+        {mainContent === "events" ? "Events" : "Clubs"}
         <span
           className="date"
           style={mainContent !== "events" ? { visibility: "hidden" } : {}}

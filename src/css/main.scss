@@ -37,6 +37,10 @@ main {
       cursor: pointer;
     }
 
+    a:last-of-type {
+      margin-right: 0;
+    }
+
     a.inactive {
       opacity: 0.5;
     }
@@ -88,7 +92,6 @@ main {
 
     iframe {
       grid-column: 1 / -1;
-      min-width: 400px;
       border-radius: 5px;
       box-shadow:
         -1px -1px 4px #fcfcfc,
@@ -96,6 +99,10 @@ main {
 
       &.hidden {
         display: none;
+      }
+
+      @media screen and (min-width: 450px) {
+        min-width: 400px;
       }
     }
   }
@@ -145,7 +152,7 @@ main {
     }
 
     img {
-      height: 150px;
+      height: 200px;
       width: 100%;
       object-fit: cover;
       object-position: center;

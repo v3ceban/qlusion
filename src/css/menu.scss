@@ -11,78 +11,12 @@
 
   &.filters {
     @media screen and (min-width: 800px) {
-      top: 249px;
+      top: 238px;
       left: initial;
       right: 30px;
       width: 330px;
       padding-top: 15px;
       height: auto;
-    }
-  }
-
-  &.login {
-    z-index: 2;
-
-    h3 {
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    form {
-      max-width: 400px;
-      margin: auto;
-
-      input,
-      button {
-        max-width: 400px;
-      }
-
-      button {
-        margin: 20px 0;
-
-        &:first-of-type {
-          margin-top: 40px;
-        }
-      }
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
-
-      &:last-of-type {
-        margin-bottom: 5px;
-      }
-
-      input {
-        margin-top: 5px;
-      }
-    }
-
-    .forgotPassword {
-      display: block;
-      text-align: right;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-
-    .forgot {
-      margin-bottom: 30px;
-    }
-
-    .prompt {
-      text-align: center;
-      font-size: 15px;
-
-      a {
-        font-style: italic;
-      }
-    }
-
-    .admin {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
   }
 

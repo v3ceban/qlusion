@@ -32,9 +32,6 @@ export default function Event(props) {
           }
           alt={event.club_name}
         />
-        {/* needs to check if user is logged in and redirect to login if not,
-        otherwise render event registration component */}
-        <button>Sign-up</button>
       </div>
       <p>{event.short_description}</p>
     </article>

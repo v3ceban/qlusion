@@ -1,36 +1,24 @@
 header {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    z-index: 3;
+  }
+
   nav {
     display: grid;
-    grid-template-columns: 30px auto 30px;
-    align-items: center;
-    justify-content: space-between;
+    grid-template-columns: repeat(3, auto);
+    gap: 15px;
 
-    @media screen and (min-width: 600px) {
-      grid-template-columns: auto 278px;
-
-      .navMenus {
-        display: grid;
-        grid-template-columns: 110px 88px 35px;
-        gap: 0 25px;
-      }
+    @media screen and (max-width: 450px) {
+      gap: 20px;
     }
 
     @media screen and (min-width: 800px) {
-      grid-template-columns: auto 223px;
-
-      .navMenus {
-        display: grid;
-        grid-template-columns: 110px 88px;
-        gap: 0 25px;
-
-        span:last-of-type {
-          display: none;
-        }
-      }
-    }
-
-    h1 {
-      z-index: 3;
+      grid-template-columns: repeat(2, auto);
     }
   }
 
@@ -43,12 +31,12 @@ header {
     padding: 7px 5px;
     border-radius: 5px;
     cursor: pointer;
-    display: grid;
-    place-items: center;
     max-width: fit-content;
     font-family: "Raleway", sans-serif;
     font-weight: 700;
+    position: relative;
     z-index: 3;
+    text-transform: capitalize;
 
     &:hover {
       box-shadow:
@@ -57,16 +45,22 @@ header {
       color: darken($text, 5%);
     }
 
-    @media screen and (min-width: 600px) {
-      max-width: initial;
-      grid-template-columns: 16px auto;
-      padding: 7px 10px;
+    &:last-of-type {
+      @media screen and (min-width: 800px) {
+        display: none;
+      }
     }
-  }
 
-  .bars {
-    font-size: 20px;
-    margin: -2px -2px -2px -3px;
+    svg {
+      @media screen and (min-width: 450px) {
+        margin-right: 5px;
+      }
+    }
+
+    .bars {
+      font-size: 20px;
+      margin: -2px -2px -2px -3px;
+    }
   }
 
   h1 svg {

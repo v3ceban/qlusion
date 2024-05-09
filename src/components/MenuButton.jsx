@@ -1,14 +1,18 @@
 /* eslint-disable react/prop-types */
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { MainContext } from "../providers/MainContent";
 import FiltersMenu from "./FiltersMenu";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function MenuButton(props) {
   const [filtersMenu, setFiltersMenu] = useState(false);
+  const [showText, setShowText] = useState(false);
+  const { setMainContent } = useContext(MainContext);
 
   useEffect(() => {
     const handleResize = () => {
       setFiltersMenu(window.innerWidth >= 800);
+      setShowText(window.innerWidth >= 450);
     };
 
     handleResize();
@@ -17,11 +21,10 @@ export default function MenuButton(props) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [setFiltersMenu, setShowText]);
 
   useEffect(() => {
-    const disableScroll =
-      (filtersMenu && window.innerWidth < 800) || props.loginMenu;
+    const disableScroll = filtersMenu && window.innerWidth < 800;
 
     if (disableScroll) {
       document.body.style.overflow = "hidden";
@@ -36,33 +39,28 @@ export default function MenuButton(props) {
         document.querySelector("main").style.display = "block";
       }
     };
-  }, [filtersMenu, props.loginMenu]);
+  }, [filtersMenu]);
 
   return (
     <>
       <span
         className="menu"
         onClick={() => {
-          if (props.menu === "login" || props.menu === "sign-up") {
-            props.setLoginMenu(true);
-            props.setWhichMenu(props.menu);
-          } else if (!props.loginMenu) {
+          if (props.menu) {
             setFiltersMenu(!filtersMenu);
+          } else if (props.content) {
+            setMainContent(props.content);
           }
         }}
       >
         <FontAwesomeIcon
-          icon={
-            filtersMenu && props.menu === "menu"
-              ? "fa-solid fa-xmark"
-              : props.icon
-          }
+          icon={filtersMenu && props.menu ? "fa-solid fa-xmark" : props.icon}
           fixedWidth
           className={props.icon === "fa-solid fa-bars" ? "bars" : ""}
         />
-        {props.content && props.content}
+        {props.content && showText && props.content}
       </span>
-      {filtersMenu && props.menu === "menu" && (
+      {filtersMenu && props.menu && (
         <FiltersMenu setFiltersMenu={setFiltersMenu} />
       )}
     </>

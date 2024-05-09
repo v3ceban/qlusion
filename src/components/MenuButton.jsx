@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useContext } from "react";
 import { MainContext } from "../providers/MainContent";
-import FiltersMenu from "./FiltersMenu";
+import { FiltersContext } from "../providers/FiltersProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function MenuButton(props) {
-  const [filtersMenu, setFiltersMenu] = useState(false);
+  const { filtersMenu, setFiltersMenu } = useContext(FiltersContext);
   const [showText, setShowText] = useState(false);
   const { setMainContent } = useContext(MainContext);
 
   useEffect(() => {
     const handleResize = () => {
       setFiltersMenu(window.innerWidth >= 800);
-      setShowText(window.innerWidth >= 450);
+      setShowText(window.innerWidth >= 475);
     };
 
     handleResize();
@@ -60,9 +60,6 @@ export default function MenuButton(props) {
         />
         {props.content && showText && props.content}
       </span>
-      {filtersMenu && props.menu && (
-        <FiltersMenu setFiltersMenu={setFiltersMenu} />
-      )}
     </>
   );
 }

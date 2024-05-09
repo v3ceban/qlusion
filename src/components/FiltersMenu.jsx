@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
 import { DateContext } from "../providers/DateProvider";
+import { MainContext } from "../providers/MainContent";
 
 export default function FiltersMenu(props) {
   const { date, setDate } = useContext(DateContext);
+  const { setMainContent } = useContext(MainContext);
   const currentDate = date;
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
@@ -104,6 +106,7 @@ export default function FiltersMenu(props) {
     }
     setSelectedDay(day);
     setDate(new Date(year, month, day));
+    setMainContent("events");
   };
 
   const changeToToday = (e) => {
@@ -113,6 +116,7 @@ export default function FiltersMenu(props) {
     setSelectedYear(today.getFullYear());
     setSelectedDay(today.getDate());
     setDate(today);
+    setMainContent("events");
     if (window.innerWidth <= 800) {
       props.setFiltersMenu(false);
     }

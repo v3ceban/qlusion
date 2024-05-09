@@ -1,6 +1,20 @@
 main {
-  margin-top: 84px;
   min-height: 800px;
+
+  .hero {
+    background: url("../img/hero.webp") no-repeat center center / cover;
+    color: $background;
+    border-radius: 5px;
+
+    h2 {
+      text-align: center;
+      padding: 15vw 0;
+      background: rgba($text, 0.6);
+      border-radius: 5px;
+      line-height: 1.5;
+      font-size: 24px;
+    }
+  }
 
   h2 {
     font-size: 36px;
@@ -66,7 +80,7 @@ main {
     }
   }
 
-  section {
+  section.events {
     display: grid;
     gap: 30px;
 
@@ -89,6 +103,11 @@ main {
       max-width: 1690px;
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+  }
+
+  section.clubs {
+    position: relative;
+    z-index: 1;
 
     iframe {
       grid-column: 1 / -1;
@@ -126,7 +145,7 @@ main {
       gap: 10px 0;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto 1fr auto;
-      max-width: 400px;
+      width: 400px;
     }
 
     @media screen and (min-width: 800px) {

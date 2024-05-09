@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { DateContext } from "../providers/DateProvider";
 import { MainContext } from "../providers/MainContent";
 import Event from "./Event";
+import FiltersMenu from "./FiltersMenu";
 
 export default function Main() {
   const { date } = useContext(DateContext);
@@ -41,6 +42,9 @@ export default function Main() {
 
   return (
     <main>
+      <section className="hero">
+        <h2>Get included in your college life with Qlusion</h2>
+      </section>
       <h2>
         {mainContent === "events" ? "Events" : "Clubs"}
         <span
@@ -48,7 +52,7 @@ export default function Main() {
           style={mainContent !== "events" ? { visibility: "hidden" } : {}}
         >{` ${isToday ? "Today" : dayOfWeek}, ${formattedDate}`}</span>
       </h2>
-      <section>
+      <section className={mainContent}>
         {mainContent === "events" && (
           <>
             {events.length === 0 ? (
@@ -59,6 +63,7 @@ export default function Main() {
             ) : (
               events.map((event, key) => <Event key={key} event={event} />)
             )}
+            <FiltersMenu />
           </>
         )}{" "}
         <iframe

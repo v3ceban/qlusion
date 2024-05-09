@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DefaultImage from "../img/default.jpg";
 
 export default function Event(props) {
   const event = props.event;
@@ -25,11 +26,7 @@ export default function Event(props) {
       </ul>
       <div className="cta-container">
         <img
-          src={
-            event.club_picture
-              ? "/img/" + event.club_picture
-              : "/img/default.jpg"
-          }
+          src={event.club_picture ? "/img/" + event.club_picture : DefaultImage}
           alt={event.club_name}
         />
       </div>

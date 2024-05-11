@@ -12,9 +12,9 @@ export default function Main() {
     const fetchEvents = async () => {
       try {
         // production
-        // const response = await fetch("/events.php?day=" + dayOfWeek);
+        const response = await fetch("/events.php?day=" + dayOfWeek);
         // local development
-        const response = await fetch("/data.json");
+        // const response = await fetch("/data.json");
         if (!response.ok) {
           throw new Error(
             `Error fetching events: ${response.status}, ${response.statusText}`,
@@ -55,18 +55,16 @@ export default function Main() {
       <section className="content">
         {mainContent === "events" && (
           <>
-            {events.length === 0 ? (
-              <p>
-                Sorry, no events found for this day, <br />
-                Try selecting a different day in the calendar
-              </p>
-            ) : (
-              <div className="events">
-                {events.map((event, key) => (
-                  <Event key={key} event={event} />
-                ))}
-              </div>
-            )}
+            <div className="events">
+              {events.length === 0 ? (
+                <p>
+                  Sorry, no events found for this day, <br />
+                  Try selecting a different day in the calendar
+                </p>
+              ) : (
+                events.map((event, key) => <Event key={key} event={event} />)
+              )}
+            </div>
             {filtersMenu && <FiltersMenu />}
           </>
         )}{" "}

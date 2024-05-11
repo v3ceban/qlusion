@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useContext } from "react";
-import { MainContext } from "../providers/MainContent";
-import { FiltersContext } from "../providers/FiltersProvider";
+import { AppContext } from "../Providers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function MenuButton(props) {
-  const { filtersMenu, setFiltersMenu } = useContext(FiltersContext);
   const [showText, setShowText] = useState(false);
-  const { setMainContent } = useContext(MainContext);
+  const { setMainContent, filtersMenu, setFiltersMenu } =
+    useContext(AppContext);
 
   useEffect(() => {
     const handleResize = () => {

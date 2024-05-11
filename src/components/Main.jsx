@@ -1,13 +1,11 @@
 import { useState, useEffect, useContext } from "react";
-import { DateContext } from "../providers/DateProvider";
-import { MainContext } from "../providers/MainContent";
+import { AppContext } from "../Providers";
 import Event from "./Event";
 import FiltersMenu from "./FiltersMenu";
 
 export default function Main() {
-  const { date } = useContext(DateContext);
+  const { date, mainContent } = useContext(AppContext);
   const [events, setEvents] = useState([]);
-  const { mainContent } = useContext(MainContext);
   const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 
   useEffect(() => {

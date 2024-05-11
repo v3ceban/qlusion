@@ -28,17 +28,19 @@ export default function MenuButton(props) {
     if (disableScroll) {
       document.body.style.overflow = "hidden";
       document.body.style.height = "100vh";
-      document.querySelector("main").style.display = "none";
+      document.querySelector("main .content .events").style.display = "none";
+      setFiltersMenu(true);
     }
 
     return () => {
       if (disableScroll) {
         document.body.style.overflow = "auto";
         document.body.style.height = "auto";
-        document.querySelector("main").style.display = "block";
+        document.querySelector("main .content .events").style.display = "grid";
+        setFiltersMenu(false);
       }
     };
-  }, [filtersMenu]);
+  }, [filtersMenu, setFiltersMenu]);
 
   return (
     <>

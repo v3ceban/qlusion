@@ -4,7 +4,7 @@ import Event from "./Event";
 import FiltersMenu from "./FiltersMenu";
 
 export default function Main() {
-  const { date, mainContent } = useContext(AppContext);
+  const { date, mainContent, filtersMenu } = useContext(AppContext);
   const [events, setEvents] = useState([]);
   const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 
@@ -41,7 +41,9 @@ export default function Main() {
   return (
     <main>
       <section className="hero">
-        <h2>Get included in your college life with Qlusion</h2>
+        <h2>
+          Get included in your college life with <span>Qlusion</span>
+        </h2>
       </section>
       <h2>
         {mainContent === "events" ? "Events" : "Clubs"}
@@ -50,7 +52,7 @@ export default function Main() {
           style={mainContent !== "events" ? { visibility: "hidden" } : {}}
         >{` ${isToday ? "Today" : dayOfWeek}, ${formattedDate}`}</span>
       </h2>
-      <section className={mainContent}>
+      <section className="content">
         {mainContent === "events" && (
           <>
             {events.length === 0 ? (
@@ -59,13 +61,17 @@ export default function Main() {
                 Try selecting a different day in the calendar
               </p>
             ) : (
-              events.map((event, key) => <Event key={key} event={event} />)
+              <div className="events">
+                {events.map((event, key) => (
+                  <Event key={key} event={event} />
+                ))}
+              </div>
             )}
-            <FiltersMenu />
+            {filtersMenu && <FiltersMenu />}
           </>
         )}{" "}
         <iframe
-          className={mainContent !== "clubs" ? "hidden" : ""}
+          className={mainContent === "events" ? "hidden" : ""}
           src="https://airtable.com/embed/appe9g0nayQGaEwk3/shr0cCfcwDyg7lRur?viewControls=on"
           frameBorder="0"
           width="100%"

@@ -24,7 +24,7 @@ export default function Event(props) {
           </li>
         )}
       </ul>
-      <div className="cta-container">
+      <div className="img-container">
         <img
           src={event.club_picture ? "/img/" + event.club_picture : DefaultImage}
           alt={event.club_name}

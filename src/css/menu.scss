@@ -1,20 +1,20 @@
-.asideMenu {
-  // position: absolute;
-  // top: 15px;
-  // left: 15px;
+.filters {
+  position: absolute;
+  top: 15px;
+  left: 15px;
   width: calc(100dvw - 30px);
-  height: calc(100dvh - 30px);
+  height: calc(100dvh - 15px);
   z-index: 1;
   background: $background;
   padding-top: calc(84px + 1.5 * 38px);
   overflow-y: auto;
 
-  &.filters {
-    @media screen and (min-width: 800px) {
-      width: 330px;
-      padding-top: 15px;
-      height: auto;
-    }
+  @media screen and (min-width: 800px) {
+    width: 330px;
+    padding-top: 15px;
+    height: fit-content;
+    position: static;
+    display: block;
   }
 
   h3 {

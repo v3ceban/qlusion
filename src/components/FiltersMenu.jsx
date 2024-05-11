@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
 import { AppContext } from "../Providers";
 
-export default function FiltersMenu(props) {
-  const { date, setDate } = useContext(AppContext);
-  const { setMainContent } = useContext(AppContext);
+export default function FiltersMenu() {
+  const { date, setDate, setMainContent, setFiltersMenu } =
+    useContext(AppContext);
   const currentDate = date;
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
@@ -101,7 +100,7 @@ export default function FiltersMenu(props) {
 
   const handleDayChange = (day, month, year) => {
     if (window.innerWidth <= 800) {
-      props.setFiltersMenu(false);
+      setFiltersMenu(false);
     }
     setSelectedDay(day);
     setDate(new Date(year, month, day));
@@ -117,11 +116,11 @@ export default function FiltersMenu(props) {
     setDate(today);
     setMainContent("events");
     if (window.innerWidth <= 800) {
-      props.setFiltersMenu(false);
+      setFiltersMenu(false);
     }
   };
   return (
-    <aside className="asideMenu container filters">
+    <aside className="container filters">
       <h3>Sort Events</h3>
       <p>Select the events you want to see</p>
       <form method="POST" id="calendarForm">

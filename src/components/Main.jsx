@@ -13,9 +13,9 @@ export default function Main() {
     const fetchEvents = async () => {
       try {
         // production
-        // const response = await fetch("/events.php?day=" + dayOfWeek);
+        const response = await fetch("/events.php?day=" + dayOfWeek);
         // local development
-        const response = await fetch("/data.json");
+        // const response = await fetch("/data.json");
         if (!response.ok) {
           throw new Error(
             `Error fetching events: ${response.status}, ${response.statusText}`,
@@ -79,19 +79,21 @@ export default function Main() {
           Get included in your college life with <span>Qlusion</span>
         </h2>
       </section>
-      <nav className="categories">
-        <ul>
-          {allCategories.map((category) => (
-            <li
-              key={category}
-              onClick={() => toggleCategory(category)}
-              className={categories.includes(category) ? "active" : ""}
-            >
-              {category}
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {mainContent === "events" && (
+        <nav className="categories">
+          <ul>
+            {allCategories.map((category) => (
+              <li
+                key={category}
+                onClick={() => toggleCategory(category)}
+                className={categories.includes(category) ? "active" : ""}
+              >
+                {category}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
       <h2>
         {mainContent === "events" ? "Events" : "Clubs"}
         <span

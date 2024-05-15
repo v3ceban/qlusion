@@ -26,7 +26,11 @@ export default function Event(props) {
       </ul>
       <div className="img-container">
         <img
-          src={event.club_picture ? "/img/" + event.club_picture : DefaultImage}
+          src={
+            event.club_picture
+              ? "/img/" + event.club_picture + ".jpg"
+              : DefaultImage
+          }
           alt={event.club_name}
         />
       </div>

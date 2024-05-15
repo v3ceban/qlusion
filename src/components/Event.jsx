@@ -17,6 +17,10 @@ export default function Event(props) {
           <FontAwesomeIcon icon="fa-solid fa-clock" fixedWidth />
           {event.event_time}
         </li>
+        <li>
+          <FontAwesomeIcon icon="fa-solid fa-circle-info" fixedWidth />
+          {event.event_description}
+        </li>
         {event.event_location && (
           <li>
             <FontAwesomeIcon icon="fa-solid fa-location-arrow" fixedWidth />

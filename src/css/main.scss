@@ -120,6 +120,7 @@ main {
         ul {
           li {
             margin-bottom: 15px;
+            text-transform: capitalize;
 
             &:first-of-type {
               font-size: 14px;
@@ -162,6 +163,10 @@ main {
             max-width: 150px;
             margin-bottom: 0;
           }
+        }
+
+        svg {
+          margin-right: 2.5px;
         }
       }
     }

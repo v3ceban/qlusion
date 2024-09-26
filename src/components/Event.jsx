@@ -9,8 +9,7 @@ import {
   faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Event(props) {
-  const event = props.event;
+export default function Event({ event }) {
   return (
     <article className="event">
       <h3>{event.club_name}</h3>

@@ -122,7 +122,7 @@ export default function FiltersMenu() {
     }
   };
   return (
-    <aside className="siteContainer filters">
+    <aside className="container filters">
       <h3>Sort Events</h3>
       <p>Select the events you want to see</p>
       <form method="POST" id="calendarForm">

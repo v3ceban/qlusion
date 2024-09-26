@@ -1,34 +1,19 @@
 "use client";
 
 import { React, useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 import { AppContext } from "@/lib/Providers";
 import Event from "./Event";
 import FiltersMenu from "./FiltersMenu";
 
-export default function Main() {
+export default function Main({ data }) {
   const { date, mainContent, filtersMenu } = useContext(AppContext);
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(data);
   const [categories, setCategories] = useState(["All"]);
   const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch("/data.json");
-        if (!response.ok) {
-          throw new Error(
-            `Error fetching events: ${response.status}, ${response.statusText}`,
-          );
-        }
-        const data = await response.json();
-        setEvents(data.filter((event) => event.event_date === dayOfWeek));
-      } catch (error) {
-        console.error(`Error fetching events: ${error.message}`);
-        setEvents([]);
-      }
-    };
-
-    fetchEvents();
+    setEvents(data.filter((event) => event.event_date === dayOfWeek));
   }, [date, dayOfWeek]);
 
   const isToday = date.toDateString() === new Date().toDateString();
@@ -103,18 +88,22 @@ export default function Main() {
       <section className="content">
         {mainContent === "events" && (
           <>
-            <div className="events">
-              {filteredEvents.length === 0 ? (
-                <p>
-                  Sorry, no events found for this day. Try selecting a different
-                  day in the calendar or a different category
-                </p>
-              ) : (
-                filteredEvents.map((event, key) => (
-                  <Event key={key} event={event} />
-                ))
-              )}
-            </div>
+            {data !== null ? (
+              <div className="events">
+                {filteredEvents.length === 0 ? (
+                  <p>
+                    Sorry, no events found for this day. Try selecting a
+                    different day in the calendar or a different category
+                  </p>
+                ) : (
+                  filteredEvents.map((event, key) => (
+                    <Event key={key} event={event} />
+                  ))
+                )}
+              </div>
+            ) : (
+              <p>Loading events...</p>
+            )}
             {filtersMenu && <FiltersMenu />}
           </>
         )}
@@ -129,3 +118,7 @@ export default function Main() {
     </main>
   );
 }
+
+Main.propTypes = {
+  data: PropTypes.array,
+};

@@ -59,6 +59,10 @@ main {
       display: grid;
       gap: 30px;
 
+      p {
+        margin-left: 5px;
+      }
+
       @media screen and (min-width: 800px) {
         max-width: 400px;
         place-content: flex-start;
@@ -90,7 +94,6 @@ main {
           2px 2px 4px #ccd0da;
         padding: 15px;
         border-radius: 7px;
-        cursor: pointer;
         margin: 0 auto;
 
         @media screen and (min-width: 450px) {

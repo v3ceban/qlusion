@@ -1,6 +1,13 @@
-/* eslint-disable react/prop-types */
+import React from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import DefaultImage from "../img/default.jpg";
+import Image from "next/image";
+import {
+  faCalendar,
+  faCircleInfo,
+  faClock,
+  faLocationArrow,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Event(props) {
   const event = props.event;
@@ -10,31 +17,41 @@ export default function Event(props) {
       <ul>
         <li>{event.club_category}</li>
         <li>
-          <FontAwesomeIcon icon="fa-solid fa-calendar" fixedWidth />
+          <FontAwesomeIcon icon={faCalendar} fixedWidth />
           {event.event_date}
         </li>
         <li>
-          <FontAwesomeIcon icon="fa-solid fa-clock" fixedWidth />
+          <FontAwesomeIcon icon={faClock} fixedWidth />
           {event.event_time}
         </li>
         <li>
-          <FontAwesomeIcon icon="fa-solid fa-circle-info" fixedWidth />
+          <FontAwesomeIcon icon={faCircleInfo} fixedWidth />
           {event.event_description}
         </li>
         {event.event_location && (
           <li>
-            <FontAwesomeIcon icon="fa-solid fa-location-arrow" fixedWidth />
+            <FontAwesomeIcon icon={faLocationArrow} fixedWidth />
             {event.event_location}
           </li>
         )}
       </ul>
       <div className="img-container">
-        <img
-          src={event.club_picture ? "/img/" + event.club_picture : DefaultImage}
+        <Image
+          src={
+            event.club_picture
+              ? "/img/" + event.club_picture
+              : "/img/default.jpg"
+          }
           alt={event.club_name}
+          width={150}
+          height={200}
         />
       </div>
       <p>{event.short_description}</p>
     </article>
   );
 }
+
+Event.propTypes = {
+  event: PropTypes.object.isRequired,
+};

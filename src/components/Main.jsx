@@ -1,5 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import { AppContext } from "../Providers";
+"use client";
+
+import { React, useState, useEffect, useContext } from "react";
+import { AppContext } from "@/lib/Providers";
 import Event from "./Event";
 import FiltersMenu from "./FiltersMenu";
 
@@ -12,9 +14,6 @@ export default function Main() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        // production
-        // const response = await fetch("/events.php?day=" + dayOfWeek);
-        // local development
         const response = await fetch("/data.json");
         if (!response.ok) {
           throw new Error(
@@ -22,9 +21,6 @@ export default function Main() {
           );
         }
         const data = await response.json();
-        // production
-        // setEvents(data);
-        // local development
         setEvents(data.filter((event) => event.event_date === dayOfWeek));
       } catch (error) {
         console.error(`Error fetching events: ${error.message}`);

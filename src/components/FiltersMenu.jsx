@@ -1,5 +1,7 @@
-import { useState, useContext } from "react";
-import { AppContext } from "../Providers";
+"use client";
+
+import { React, useState, useContext } from "react";
+import { AppContext } from "@/lib/Providers";
 
 export default function FiltersMenu() {
   const { date, setDate, setMainContent, setFiltersMenu } =
@@ -120,7 +122,7 @@ export default function FiltersMenu() {
     }
   };
   return (
-    <aside className="container filters">
+    <aside className="siteContainer filters">
       <h3>Sort Events</h3>
       <p>Select the events you want to see</p>
       <form method="POST" id="calendarForm">

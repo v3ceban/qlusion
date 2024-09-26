@@ -1,7 +1,10 @@
-/* eslint-disable react/prop-types */
-import { useState, useEffect, useContext } from "react";
-import { AppContext } from "../Providers";
+"use client";
+
+import { React, useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
+import { AppContext } from "@/lib/Providers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function MenuButton(props) {
   const [showText, setShowText] = useState(false);
@@ -55,12 +58,18 @@ export default function MenuButton(props) {
         }}
       >
         <FontAwesomeIcon
-          icon={filtersMenu && props.menu ? "fa-solid fa-xmark" : props.icon}
+          icon={filtersMenu && props.menu ? faXmark : props.icon}
           fixedWidth
-          className={props.icon === "fa-solid fa-bars" ? "bars" : ""}
+          className={props.menu ? "bars" : ""}
         />
         {props.content && showText && props.content}
       </span>
     </>
   );
 }
+
+MenuButton.propTypes = {
+  icon: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  menu: PropTypes.bool,
+};

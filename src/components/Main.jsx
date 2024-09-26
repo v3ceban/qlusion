@@ -14,7 +14,7 @@ export default function Main({ data }) {
 
   useEffect(() => {
     setEvents(data.filter((event) => event.event_date === dayOfWeek));
-  }, [date, dayOfWeek]);
+  }, [date, dayOfWeek, data]);
 
   const isToday = date.toDateString() === new Date().toDateString();
   const formattedDate = date.toLocaleDateString("en-US", {

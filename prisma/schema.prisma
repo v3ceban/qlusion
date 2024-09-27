@@ -9,7 +9,34 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model ClubAdmin {
+  id         String      @id @default(cuid())
+  email      String      @unique
+  name       String?
+  clubEvents ClubEvent[]
+}
+
+model ClubEvent {
+  id         String         @id @default(cuid())
+  clubName   String
+  categories ClubCategory[]
+  social     String
+  day        String
+  time       String
+  info       String
+  location   String
+  contact    String
+  picture    String
+  clubAdmins ClubAdmin[]
+}
+
+model ClubCategory {
+  id         String      @id @default(cuid())
+  name       String
+  clubEvents ClubEvent[]
 }

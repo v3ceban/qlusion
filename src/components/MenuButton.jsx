@@ -14,7 +14,7 @@ export default function MenuButton(props) {
   useEffect(() => {
     const handleResize = () => {
       setFiltersMenu(window.innerWidth >= 800);
-      setShowText(window.innerWidth >= 475);
+      setShowText(window.innerWidth >= 580);
     };
 
     handleResize();

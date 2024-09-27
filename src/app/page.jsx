@@ -1,7 +1,5 @@
 import React from "react";
-import Main from "@/components/Main";
-import Header from "@/components/Header";
-import { AppProvider } from "@/lib/Providers";
+import HomePage from "@/components/HomePage";
 
 export default async function Home() {
   const data = [];
@@ -15,10 +13,5 @@ export default async function Home() {
     console.error(error);
   }
 
-  return (
-    <AppProvider>
-      <Header />
-      <Main data={data} />
-    </AppProvider>
-  );
+  return <HomePage data={data} />;
 }

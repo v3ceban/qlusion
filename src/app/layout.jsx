@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AppProvider } from "@/lib/Providers";
-import { getServerSession } from "next-auth";
+import { auth } from "@/lib/auth";
 import Header from "@/components/Header";
 import "@/scss/index.scss";
 
@@ -14,7 +17,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession();
+  const session = await auth();
   return (
     <html lang="en">
       <body>

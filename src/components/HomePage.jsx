@@ -6,7 +6,7 @@ import { AppContext } from "@/lib/Providers";
 import Event from "./Event";
 import FiltersMenu from "./FiltersMenu";
 
-export default function Main({ data, error }) {
+export default function Main({ data }) {
   const { date, mainContent, filtersMenu } = useContext(AppContext);
   const [events, setEvents] = useState(data);
   const [categories, setCategories] = useState(["All"]);
@@ -55,12 +55,6 @@ export default function Main({ data, error }) {
     "Social Justice",
     "Special Interest",
   ];
-
-  error && console.error(error);
-
-  if (error) {
-    return <p>Error</p>;
-  }
 
   return (
     <main>
@@ -126,6 +120,5 @@ export default function Main({ data, error }) {
 }
 
 Main.propTypes = {
-  error: PropTypes.string,
   data: PropTypes.array,
 };

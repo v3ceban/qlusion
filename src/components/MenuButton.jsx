@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { AppContext } from "@/lib/Providers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
 
 export default function MenuButton(props) {
   const [showText, setShowText] = useState(false);
@@ -45,6 +46,8 @@ export default function MenuButton(props) {
     };
   }, [filtersMenu, setFiltersMenu]);
 
+  const router = useRouter();
+
   return (
     <>
       <span
@@ -53,6 +56,7 @@ export default function MenuButton(props) {
           if (props.menu) {
             setFiltersMenu(!filtersMenu);
           } else if (props.content) {
+            router.push("/");
             setMainContent(props.content);
           }
         }}

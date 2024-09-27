@@ -8,17 +8,20 @@ import {
   faRocket,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import { getServerSession } from "next-auth";
+import { auth } from "@/lib/auth";
+import Link from "next/link";
 
 export default async function Header() {
-  const session = await getServerSession();
+  const session = await auth();
 
   return (
     <header>
-      <h1>
-        <FontAwesomeIcon icon={faRocket} />
-        Qlusion
-      </h1>
+      <Link href="/">
+        <h1>
+          <FontAwesomeIcon icon={faRocket} />
+          Qlusion
+        </h1>
+      </Link>
       <nav>
         <MenuButton icon={faCalendar} content="events" />
         <MenuButton icon={faUsers} content="clubs" />

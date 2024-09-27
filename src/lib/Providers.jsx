@@ -31,6 +31,7 @@ export const AppProvider = ({ session, children }) => {
 
 AppProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  session: PropTypes.object.isRequired,
 };
 
 export default SessionProvider;

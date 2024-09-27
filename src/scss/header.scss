@@ -9,6 +9,10 @@ header {
   margin: 0 0 20px;
   row-gap: 10px;
 
+  a:hover {
+    text-decoration: none;
+  }
+
   h1 {
     z-index: 3;
   }

@@ -55,6 +55,7 @@ export default function Event({ event }) {
         />
       </div>
       <p>{event.short_description}</p>
+      {hasAdminAccess && <button>Edit</button>}
     </article>
   );
 }

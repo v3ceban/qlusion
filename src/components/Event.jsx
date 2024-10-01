@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -8,8 +10,14 @@ import {
   faClock,
   faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
+import { AppContext } from "@/lib/Providers";
 
 export default function Event({ event }) {
+  const { session } = useContext(AppContext);
+  const hasAdminAccess = event.adminUsers?.some(
+    (user) => user.email === session.user.email,
+  );
+
   return (
     <article className="event">
       <h3>{event.club_name}</h3>

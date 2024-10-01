@@ -13,7 +13,11 @@ export default function Main({ data }) {
   const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 
   useEffect(() => {
-    setEvents(data.filter((event) => event.event_date === dayOfWeek));
+    setEvents(
+      data.filter(
+        (event) => event.event_date === dayOfWeek || event.day === dayOfWeek,
+      ),
+    );
   }, [date, dayOfWeek, data]);
 
   const isToday = date.toDateString() === new Date().toDateString();

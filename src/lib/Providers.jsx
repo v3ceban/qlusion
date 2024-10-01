@@ -21,6 +21,7 @@ export const AppProvider = ({ session, children }) => {
           setFiltersMenu,
           mainContent,
           setMainContent,
+          session,
         }}
       >
         {children}

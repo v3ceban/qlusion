@@ -10,9 +10,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
+import { prisma } from "@/lib/prisma";
 
 export default async function Header() {
   const session = await auth();
+  let user = null;
+
+  if (session) {
+    user = await prisma.user.findUnique({
+      where: {
+        email: session?.user?.email,
+      },
+      include: {
+        adminEvents: true,
+      },
+    });
+  }
 
   return (
     <header>
@@ -28,7 +41,17 @@ export default async function Header() {
         <AuthButton />
         <MenuButton icon={faBars} menu="menu" />
       </nav>
-      {session && <p>Hello, {session?.user?.name}</p>}
+      {session && (
+        <p>
+          Hello, {user?.name}!{" "}
+          {user.adminEvents.length > 0 && (
+            <>
+              You&apos;re admin for {user.adminEvents.length} club(s).{" "}
+              <Link href={`/clubs/${user.id}`}>Click here</Link> to view them.
+            </>
+          )}
+        </p>
+      )}
     </header>
   );
 }

@@ -14,11 +14,11 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-model ClubAdmin {
-  id         String      @id @default(cuid())
-  email      String      @unique
-  name       String?
-  clubEvents ClubEvent[]
+model User {
+  id          String      @id @default(cuid())
+  email       String      @unique
+  name        String?
+  adminEvents ClubEvent[]
 }
 
 model ClubEvent {
@@ -32,7 +32,7 @@ model ClubEvent {
   location   String
   contact    String
   picture    String
-  clubAdmins ClubAdmin[]
+  adminUsers User[]
 }
 
 model ClubCategory {

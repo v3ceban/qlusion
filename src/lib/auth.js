@@ -18,12 +18,14 @@ const newUser = async (profile) => {
           },
         });
       }
+
+      return true;
     } catch (error) {
       console.error(error);
       return false;
     }
-    return true;
   }
+  console.error("Login from unauthorized email: ", profile.email);
   return false;
 };
 
@@ -36,7 +38,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   callbacks: {
     async signIn({ profile }) {
-      return profile.email.endsWith("@scu.edu");
+      const authResult = await newUser(profile);
+      return authResult;
     },
   },
   pages: {

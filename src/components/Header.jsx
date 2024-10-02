@@ -44,10 +44,21 @@ export default async function Header() {
       {session && (
         <p>
           Hello, {user?.name}!{" "}
-          {user.adminEvents.length > 0 && (
+          {user.adminEvents.length > 0 ? (
             <>
-              You&apos;re admin for {user.adminEvents.length} club(s).{" "}
-              <Link href={`/clubs/${user.id}`}>Click here</Link> to view them.
+              You&apos;re admin for {user.adminEvents.length} event(s).{" "}
+              <Link href={`/my_events`}>Click here</Link> to manage them.
+            </>
+          ) : user.role === "admin" || user.role === "clubAdmin" ? (
+            <>
+              <Link href="/my_events/new">Create an event</Link> to get started.
+            </>
+          ) : (
+            <>
+              You don&apos;t have rights to create an event.
+              <br />
+              Should this be changed?{" "}
+              <a href="mailto:support@qlusion.com">Contact Qlusion</a>.
             </>
           )}
         </p>

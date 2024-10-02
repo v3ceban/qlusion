@@ -67,6 +67,7 @@ input::placeholder {
 }
 
 select {
+  display: block;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -89,8 +90,11 @@ select {
     2px 2px 4px #ccd0da;
 }
 
-button {
-  display: block;
+button,
+a.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 310px;
   cursor: pointer;
@@ -104,6 +108,7 @@ button {
   height: 45px;
 
   &:hover {
+    text-decoration: none;
     background-image: linear-gradient(rgba(114, 135, 253, 0.6),
         rgba(30, 102, 245, 0.56));
   }

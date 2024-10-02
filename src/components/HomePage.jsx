@@ -1,10 +1,10 @@
 "use client";
 
-import { React, useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { AppContext } from "@/lib/Providers";
-import Event from "./Event";
 import FiltersMenu from "./FiltersMenu";
+import Events from "./Events";
 
 export default function Main({ data }) {
   const { date, mainContent, filtersMenu } = useContext(AppContext);
@@ -13,11 +13,7 @@ export default function Main({ data }) {
   const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 
   useEffect(() => {
-    setEvents(
-      data.filter(
-        (event) => event.event_date === dayOfWeek || event.day === dayOfWeek,
-      ),
-    );
+    setEvents(data.filter((event) => event.event_date === dayOfWeek));
   }, [date, dayOfWeek, data]);
 
   const isToday = date.toDateString() === new Date().toDateString();
@@ -93,18 +89,7 @@ export default function Main({ data }) {
         {mainContent === "events" && (
           <>
             {data !== null ? (
-              <div className="events">
-                {filteredEvents.length === 0 ? (
-                  <p>
-                    Sorry, no events found for this day. Try selecting a
-                    different day in the calendar or a different category
-                  </p>
-                ) : (
-                  filteredEvents.map((event, key) => (
-                    <Event key={key} event={event} />
-                  ))
-                )}
-              </div>
+              <Events events={filteredEvents} />
             ) : (
               <p>Loading events...</p>
             )}

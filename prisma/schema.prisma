@@ -18,13 +18,15 @@ model User {
   id          String      @id @default(cuid())
   email       String      @unique
   name        String?
+  role        Role        @default(user)
   adminEvents ClubEvent[]
 }
 
 model ClubEvent {
-  id         String         @id @default(cuid())
+  id         String       @id @default(cuid())
   clubName   String
-  categories ClubCategory[]
+  categoryId String
+  category   ClubCategory @relation(fields: [categoryId], references: [id])
   social     String
   day        String
   time       String
@@ -39,4 +41,10 @@ model ClubCategory {
   id         String      @id @default(cuid())
   name       String
   clubEvents ClubEvent[]
+}
+
+enum Role {
+  admin
+  clubAdmin
+  user
 }

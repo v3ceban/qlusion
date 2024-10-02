@@ -1,0 +1,28 @@
+.EventCRUD {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1rem 3rem;
+
+    label {
+      display: block;
+      text-transform: capitalize;
+      font-size: 1.2rem;
+      font-weight: 600;
+
+      input,
+      select {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        min-width: 100%;
+      }
+
+      select {
+        height: 50px;
+      }
+    }
+  }
+}

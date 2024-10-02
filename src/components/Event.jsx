@@ -11,6 +11,7 @@ import {
   faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "@/lib/Providers";
+import Link from "next/link";
 
 export default function Event({ event }) {
   const { session } = useContext(AppContext);
@@ -20,21 +21,27 @@ export default function Event({ event }) {
 
   return (
     <article className="event">
-      <h3>{event.club_name}</h3>
+      <h3>{event.club_name || "Error Loading Club Name"}</h3>
       <ul>
-        <li>{event.club_category}</li>
-        <li>
-          <FontAwesomeIcon icon={faCalendar} fixedWidth />
-          {event.event_date}
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faClock} fixedWidth />
-          {event.event_time}
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faCircleInfo} fixedWidth />
-          {event.event_description}
-        </li>
+        {event.club_category && <li>{event.club_category}</li>}
+        {event.event_date && (
+          <li>
+            <FontAwesomeIcon icon={faCalendar} fixedWidth />
+            {event.event_date}
+          </li>
+        )}
+        {event.event_time && (
+          <li>
+            <FontAwesomeIcon icon={faClock} fixedWidth />
+            {event.event_time}
+          </li>
+        )}
+        {event.event_description && (
+          <li>
+            <FontAwesomeIcon icon={faCircleInfo} fixedWidth />
+            {event.event_description}
+          </li>
+        )}
         {event.event_location && (
           <li>
             <FontAwesomeIcon icon={faLocationArrow} fixedWidth />
@@ -54,8 +61,12 @@ export default function Event({ event }) {
           height={200}
         />
       </div>
-      <p>{event.short_description}</p>
-      {hasAdminAccess && <button>Edit</button>}
+      {event.short_description && <p>{event.short_description}</p>}
+      {hasAdminAccess && (
+        <Link className="button" href={`/my_events/edit/${event.id}`}>
+          Edit
+        </Link>
+      )}
     </article>
   );
 }

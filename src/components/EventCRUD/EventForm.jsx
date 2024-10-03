@@ -136,6 +136,13 @@ const EventForm = async ({ event }) => {
                 </select>
               </label>
             );
+          } else if (field === "picture") {
+            return (
+              <label key={field}>
+                Picture
+                <input type="file" name={field} accept="image/*" />
+              </label>
+            );
           } else {
             return (
               <label key={field}>
@@ -145,10 +152,12 @@ const EventForm = async ({ event }) => {
             );
           }
         })}
-        <button type="submit">{event ? "Update" : "Create"}</button>
+        <div className="buttons">
+          {event && <Delete onDelete={deleteEvent} />}
+          <Cancel />
+          <button type="submit">{event ? "Update" : "Create"}</button>
+        </div>
       </form>
-      {event && <Delete onDelete={deleteEvent} />}
-      <Cancel />
     </main>
   );
 };

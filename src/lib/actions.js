@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 // This file contains server actions. It is ment to be used on the server side only.
 // It is not included in the client bundle. Never include client side code here.
-// Never export functions that use sensitive data like API keys or database passwords.
+// Never export functions that return sensitive data like API keys or database passwords.
 
 // Checks if user is signed in. Redirects to home page if not.
 // Accepts optional array roles. Redirects to home page if

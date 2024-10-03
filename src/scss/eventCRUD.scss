@@ -24,5 +24,21 @@
         height: 50px;
       }
     }
+
+    .buttons {
+      margin-top: 1rem;
+      padding-top: 2rem;
+      grid-column: 1 / -1;
+      border-top: 1px solid #ccc;
+
+      display: grid;
+      grid-gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+      button,
+      a {
+        min-width: 100%;
+      }
+    }
   }
 }

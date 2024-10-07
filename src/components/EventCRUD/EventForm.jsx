@@ -4,8 +4,11 @@ import { userSignedIn } from "@/lib/actions";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
+import { put } from "@vercel/blob";
+import { fileIsPicture } from "@/lib/utils";
 import Cancel from "./Cancel";
 import Delete from "./Delete";
+import FileUpload from "./FileUpload";
 
 const fields = [
   "clubName",
@@ -19,15 +22,30 @@ const fields = [
   "picture",
 ];
 
-const getDataFromForm = (formData) => {
+const getDataFromForm = async (formData) => {
+  "use server";
+
   const data = {};
 
-  fields.forEach((field) => {
+  for (const field of fields) {
     const value = formData.get(field);
     if (value) {
-      data[field] = value;
+      if (field === "picture" && value instanceof File) {
+        if (value.size === 0 && !fileIsPicture(value)) {
+          console.error("Invalid file type or size");
+          return;
+        }
+        const contentType = value.type || "text/plain";
+        const blob = await put(value.name, value, {
+          contentType,
+          access: "public",
+        });
+        data[field] = blob.url;
+      } else {
+        data[field] = value;
+      }
     }
-  });
+  }
 
   return data;
 };
@@ -48,7 +66,7 @@ const EventForm = async ({ event }) => {
       return;
     }
 
-    const data = getDataFromForm(formData);
+    const data = await getDataFromForm(formData);
     await prisma.ClubEvent.create({
       data: {
         ...data,
@@ -78,7 +96,8 @@ const EventForm = async ({ event }) => {
       return;
     }
 
-    const data = getDataFromForm(formData);
+    const data = await getDataFromForm(formData);
+    console.log(data);
     await prisma.ClubEvent.update({
       where: {
         id: event?.id,
@@ -136,12 +155,32 @@ const EventForm = async ({ event }) => {
                 </select>
               </label>
             );
-          } else if (field === "picture") {
+          } else if (field === "day") {
             return (
               <label key={field}>
-                Picture
-                <input type="file" name={field} accept="image/*" />
+                Day
+                <select name="day" defaultValue={event?.day}>
+                  <option value="" hidden>
+                    Select a day
+                  </option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
+                </select>
               </label>
+            );
+          } else if (field === "picture") {
+            return (
+              <FileUpload
+                key={field}
+                name={field}
+                accept="image/*"
+                imageUrl={event?.picture}
+              />
             );
           } else {
             return (

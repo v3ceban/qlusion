@@ -8,7 +8,7 @@ import { put } from "@vercel/blob";
 import { fileIsPicture } from "@/lib/utils";
 import Cancel from "./Cancel";
 import Delete from "./Delete";
-import FileUpload from "./FileUpload";
+import FileUpload from "@/components/FileUpload";
 
 const fields = [
   "clubName",
@@ -178,6 +178,7 @@ const EventForm = async ({ event }) => {
               <FileUpload
                 key={field}
                 name={field}
+                title="Picture"
                 accept="image/*"
                 imageUrl={event?.picture}
               />

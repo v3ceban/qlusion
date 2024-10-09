@@ -26,27 +26,28 @@ const getDataFromForm = async (formData) => {
   "use server";
 
   const data = {};
+  console.log(formData);
 
   for (const field of fields) {
     const value = formData.get(field);
-    if (value) {
-      if (field === "picture" && value instanceof File) {
-        if (value.size === 0 && !fileIsPicture(value)) {
-          console.error("Invalid file type or size");
-          return;
-        }
+    if (field === "picture" && value instanceof File) {
+      if (value.size === 0 && !fileIsPicture(value)) {
+        console.error("Invalid file type or size");
+        data[field] = "";
+      } else {
         const contentType = value.type || "text/plain";
         const blob = await put(value.name, value, {
           contentType,
           access: "public",
         });
         data[field] = blob.url;
-      } else {
-        data[field] = value;
       }
+    } else {
+      data[field] = value || "";
     }
   }
 
+  console.log(data);
   return data;
 };
 
@@ -97,7 +98,6 @@ const EventForm = async ({ event }) => {
     }
 
     const data = await getDataFromForm(formData);
-    console.log(data);
     await prisma.ClubEvent.update({
       where: {
         id: event?.id,
@@ -143,7 +143,11 @@ const EventForm = async ({ event }) => {
             return (
               <label key={field}>
                 Category
-                <select name="categoryId" defaultValue={event?.categoryId}>
+                <select
+                  required={true}
+                  name="categoryId"
+                  defaultValue={event?.categoryId}
+                >
                   <option value="" hidden>
                     Select a category
                   </option>
@@ -159,7 +163,7 @@ const EventForm = async ({ event }) => {
             return (
               <label key={field}>
                 Day
-                <select name="day" defaultValue={event?.day}>
+                <select required={true} name="day" defaultValue={event?.day}>
                   <option value="" hidden>
                     Select a day
                   </option>
@@ -187,7 +191,12 @@ const EventForm = async ({ event }) => {
             return (
               <label key={field}>
                 {field === "clubName" ? "Club/Event Name" : field}:
-                <input type="text" name={field} defaultValue={event?.[field]} />
+                <input
+                  required={true}
+                  type="text"
+                  name={field}
+                  defaultValue={event?.[field]}
+                />
               </label>
             );
           }

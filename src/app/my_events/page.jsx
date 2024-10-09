@@ -1,10 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Events from "@/components/Events";
 import { userSignedIn } from "@/lib/actions";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import Error from "@/components/Toasts/Error";
+import Success from "@/components/Toasts/Success";
 
-export default async function UserClubs() {
+export default async function UserClubs({ searchParams }) {
   const data = [];
   const { user } = await userSignedIn(["admin", "clubAdmin"]);
 
@@ -18,19 +21,21 @@ export default async function UserClubs() {
 
   return (
     <main>
-      <section className="hero">
-        <h2>
-          <span>Hi, {user.name}</span>
-          Please manage your events below
-          <br />
-          - or -
-          <br />
-          <Link href="/my_events/new">create new event</Link>.
-        </h2>
-      </section>
+      <h2 className="createNewEvent">
+        {data.length > 0 ? "My Events" : "You have no events yet."}
+        <Link className="button" href="/my_events/new">
+          Create New Event
+        </Link>
+      </h2>
+      <Success message={searchParams.success} />
+      <Error message={searchParams.error} />
       <section className="content">
         <Events events={data} />
       </section>
     </main>
   );
 }
+
+UserClubs.propTypes = {
+  searchParams: PropTypes.object,
+};

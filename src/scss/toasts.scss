@@ -1,0 +1,29 @@
+.toast {
+  text-align: center;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 1rem 0;
+
+  &.error {
+    background: $red;
+
+    &:hover {
+      background: darken($red, 5%);
+    }
+  }
+
+  &.success {
+    background: $blue;
+
+    &:hover {
+      background: darken($blue, 5%);
+    }
+  }
+
+  .close {
+    margin-left: 0.25rem;
+  }
+}

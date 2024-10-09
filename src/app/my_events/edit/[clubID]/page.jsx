@@ -31,7 +31,11 @@ const EditClub = async ({ params }) => {
     redirect("/");
   }
 
-  return <EventForm event={event} />;
+  return (
+    <>
+      <EventForm event={event} />
+    </>
+  );
 };
 
 EditClub.propTypes = {

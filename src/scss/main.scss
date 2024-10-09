@@ -51,6 +51,17 @@ main {
     text-transform: uppercase;
   }
 
+  .createNewEvent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    a {
+      place-self: end;
+      font-size: 16px;
+      text-transform: initial;
+    }
+  }
+
   .content {
     display: grid;
     grid-template-columns: auto max-content;

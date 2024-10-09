@@ -26,10 +26,12 @@ const getDataFromForm = async (formData) => {
   "use server";
 
   const data = {};
-  console.log(formData);
 
   for (const field of fields) {
     const value = formData.get(field);
+    if (!value) {
+      throw new Error(`Missing required field: ${field}`);
+    }
     if (field === "picture" && value instanceof File) {
       if (value.size === 0 && !fileIsPicture(value)) {
         console.error("Invalid file type or size");
@@ -42,12 +44,13 @@ const getDataFromForm = async (formData) => {
         });
         data[field] = blob.url;
       }
+    } else if (field === "categoryId") {
+      data[field] = value || "cm1quiavf0000k693uihmt6w0";
     } else {
       data[field] = value || "";
     }
   }
 
-  console.log(data);
   return data;
 };
 
@@ -67,21 +70,30 @@ const EventForm = async ({ event }) => {
       return;
     }
 
-    const data = await getDataFromForm(formData);
-    await prisma.ClubEvent.create({
-      data: {
-        ...data,
-        adminUsers: {
-          connect: {
-            id: user.id,
+    try {
+      const data = await getDataFromForm(formData);
+      await prisma.ClubEvent.create({
+        data: {
+          ...data,
+          adminUsers: {
+            connect: {
+              id: user.id,
+            },
           },
         },
-      },
-    });
+      });
+    } catch (error) {
+      if (error.message.startsWith("Missing required field:")) {
+        const message = "Failed to update event. " + error.message;
+        redirect(`/my_events/?error=${message}`);
+      } else {
+        redirect(`/my_events/?error=Unable to create event`);
+      }
+    }
 
     revalidatePath("/my_events/");
     revalidatePath("/");
-    redirect("/my_events/");
+    redirect("/my_events/?success=Event created");
   };
 
   const updateEvent = async (formData) => {
@@ -97,17 +109,26 @@ const EventForm = async ({ event }) => {
       return;
     }
 
-    const data = await getDataFromForm(formData);
-    await prisma.ClubEvent.update({
-      where: {
-        id: event?.id,
-      },
-      data,
-    });
+    try {
+      const data = await getDataFromForm(formData);
+      await prisma.ClubEvent.update({
+        where: {
+          id: event?.id,
+        },
+        data,
+      });
+    } catch (error) {
+      if (error.message.startsWith("Missing required field:")) {
+        const message = "Failed to update event. " + error.message;
+        redirect(`/my_events/?error=${message}`);
+      } else {
+        redirect(`/my_events/?error=Unable to update event`);
+      }
+    }
 
     revalidatePath("/my_events/");
     revalidatePath("/");
-    redirect("/my_events/");
+    redirect("/my_events/?success=Event updated");
   };
 
   const deleteEvent = async () => {
@@ -123,15 +144,19 @@ const EventForm = async ({ event }) => {
       return;
     }
 
-    await prisma.ClubEvent.delete({
-      where: {
-        id: event?.id,
-      },
-    });
+    try {
+      await prisma.ClubEvent.delete({
+        where: {
+          id: event?.id,
+        },
+      });
+    } catch (error) {
+      redirect(`/my_events/edit/${event?.id}?error=Unable to delete event`);
+    }
 
     revalidatePath("/my_events/");
     revalidatePath("/");
-    redirect("/my_events/");
+    redirect("/my_events/?success=Event deleted");
   };
 
   return (

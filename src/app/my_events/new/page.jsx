@@ -10,7 +10,11 @@ const NewClub = async () => {
     redirect("/");
   }
 
-  return <EventForm event={null} />;
+  return (
+    <>
+      <EventForm event={null} />
+    </>
+  );
 };
 
 export default NewClub;

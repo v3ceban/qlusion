@@ -22,7 +22,7 @@ export default async function Header() {
         email: session?.user?.email,
       },
       include: {
-        adminEvents: true,
+        clubs: true,
       },
     });
   }
@@ -44,9 +44,9 @@ export default async function Header() {
       {session && (
         <p>
           Hello, {user?.name}!{" "}
-          {user.adminEvents.length > 0 ? (
+          {user.clubs.length > 0 ? (
             <>
-              You&apos;re admin for {user.adminEvents.length} event(s).{" "}
+              You&apos;re admin for {user.clubs.length} event(s).{" "}
               <Link href={`/my_events`}>Click here</Link> to manage them.
             </>
           ) : user.role === "admin" || user.role === "clubAdmin" ? (

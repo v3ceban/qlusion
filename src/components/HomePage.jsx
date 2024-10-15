@@ -13,7 +13,7 @@ export default function Main({ data }) {
   const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 
   useEffect(() => {
-    setEvents(data.filter((event) => event.event_date === dayOfWeek));
+    setEvents(data.filter((event) => event.day === dayOfWeek));
   }, [date, dayOfWeek, data]);
 
   const isToday = date.toDateString() === new Date().toDateString();
@@ -32,6 +32,9 @@ export default function Main({ data }) {
         : categories.includes(category)
           ? categories.filter((c) => c !== category && c !== "All")
           : [...categories, category];
+      if (updatedCategories.length === 0) {
+        updatedCategories.push("All");
+      }
       setCategories(updatedCategories);
     }
   };
@@ -39,7 +42,7 @@ export default function Main({ data }) {
   const filteredEvents = events.filter((event) =>
     categories.includes("All")
       ? true
-      : categories.includes(event.club_category),
+      : categories.some((category) => event.category.name === category),
   );
 
   const allCategories = [

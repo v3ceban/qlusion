@@ -15,7 +15,7 @@ export default async function UserClubs({ searchParams }) {
     redirect("/");
   }
 
-  user.adminEvents.map((event) => {
+  user.clubs.map((event) => {
     data.push(event);
   });
 

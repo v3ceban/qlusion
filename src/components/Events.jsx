@@ -11,7 +11,7 @@ const Events = ({ events }) => {
           the calendar or a different category
         </p>
       ) : (
-        events.map((event, key) => <Event key={key} event={event} />)
+        events.map((event) => <Event key={event.id} event={event} />)
       )}
     </div>
   );

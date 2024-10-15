@@ -17,7 +17,7 @@ const EditClub = async ({ params }) => {
       id: params.clubID,
     },
     include: {
-      adminUsers: true,
+      admins: true,
     },
   });
 
@@ -25,9 +25,9 @@ const EditClub = async ({ params }) => {
     redirect("/");
   }
 
-  const adminUserIds = event.adminUsers.map((adminUser) => adminUser.id);
+  const adminIds = event.admins.map((admin) => admin.id);
 
-  if (!adminUserIds.includes(user.id)) {
+  if (!adminIds.includes(user.id)) {
     redirect("/");
   }
 

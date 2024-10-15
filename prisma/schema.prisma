@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,32 +12,29 @@ datasource db {
 }
 
 model User {
-  id          String      @id @default(cuid())
-  email       String      @unique
-  name        String?
-  role        Role        @default(user)
-  adminEvents ClubEvent[]
+  id    String      @id @default(cuid())
+  email String      @unique
+  name  String?
+  role  Role        @default(user)
+  clubs ClubEvent[]
 }
 
 model ClubEvent {
   id         String       @id @default(cuid())
-  clubName   String
   categoryId String
   category   ClubCategory @relation(fields: [categoryId], references: [id])
-  social     String
+  name       String
+  location   String
   day        String
   time       String
-  info       String
-  location   String
-  contact    String
   picture    String
-  adminUsers User[]
+  admins     User[]
 }
 
 model ClubCategory {
-  id         String      @id @default(cuid())
-  name       String
-  clubEvents ClubEvent[]
+  id    String      @id @default(cuid())
+  name  String
+  clubs ClubEvent[]
 }
 
 enum Role {

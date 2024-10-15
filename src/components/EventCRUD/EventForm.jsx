@@ -4,23 +4,13 @@ import { userSignedIn } from "@/lib/actions";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
-import { put } from "@vercel/blob";
+import { del, put } from "@vercel/blob";
 import { fileIsPicture } from "@/lib/utils";
 import Cancel from "./Cancel";
 import Delete from "./Delete";
 import FileUpload from "@/components/FileUpload";
 
-const fields = [
-  "clubName",
-  "categoryId",
-  "social",
-  "day",
-  "time",
-  "info",
-  "location",
-  "contact",
-  "picture",
-];
+const fields = ["name", "categoryId", "day", "time", "location", "picture"];
 
 const getDataFromForm = async (formData) => {
   "use server";
@@ -75,7 +65,7 @@ const EventForm = async ({ event }) => {
       await prisma.ClubEvent.create({
         data: {
           ...data,
-          adminUsers: {
+          admins: {
             connect: {
               id: user.id,
             },
@@ -84,9 +74,11 @@ const EventForm = async ({ event }) => {
       });
     } catch (error) {
       if (error.message.startsWith("Missing required field:")) {
+        console.error(error);
         const message = "Failed to update event. " + error.message;
         redirect(`/my_events/?error=${message}`);
       } else {
+        console.error(error);
         redirect(`/my_events/?error=Unable to create event`);
       }
     }
@@ -111,6 +103,16 @@ const EventForm = async ({ event }) => {
 
     try {
       const data = await getDataFromForm(formData);
+      const oldEvent = await prisma.ClubEvent.findUnique({
+        where: {
+          id: event?.id,
+        },
+      });
+
+      if (!data.picture && oldEvent.picture) {
+        data.picture = oldEvent.picture;
+      }
+
       await prisma.ClubEvent.update({
         where: {
           id: event?.id,
@@ -119,9 +121,11 @@ const EventForm = async ({ event }) => {
       });
     } catch (error) {
       if (error.message.startsWith("Missing required field:")) {
+        console.error(error);
         const message = "Failed to update event. " + error.message;
         redirect(`/my_events/?error=${message}`);
       } else {
+        console.error(error);
         redirect(`/my_events/?error=Unable to update event`);
       }
     }
@@ -150,6 +154,9 @@ const EventForm = async ({ event }) => {
           id: event?.id,
         },
       });
+      if (event.picture) {
+        await del(event.picture);
+      }
     } catch (error) {
       redirect(`/my_events/edit/${event?.id}?error=Unable to delete event`);
     }
@@ -231,6 +238,14 @@ const EventForm = async ({ event }) => {
           <Cancel />
           <button type="submit">{event ? "Update" : "Create"}</button>
         </div>
+        <p>
+          Need to add an admin?{" "}
+          <a
+            href={`mailto:support@qlusion.com?subject=Add%20an%20admin%20for%20event%20${event.id}`}
+          >
+            Reach out
+          </a>
+        </p>
       </form>
     </main>
   );

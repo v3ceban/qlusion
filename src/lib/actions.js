@@ -17,9 +17,10 @@ export const userSignedIn = async (roles = []) => {
           email: session?.user?.email,
         },
         include: {
-          adminEvents: {
+          clubs: {
             include: {
-              adminUsers: true,
+              category: true,
+              admins: true,
             },
           },
         },

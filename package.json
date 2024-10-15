@@ -32,5 +32,8 @@
     "globals": "^15.9.0",
     "prisma": "^5.20.0",
     "sass": "^1.79.3"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   }
 }

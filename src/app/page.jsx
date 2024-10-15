@@ -1,17 +1,14 @@
 import React from "react";
 import HomePage from "@/components/HomePage";
+import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
-  const data = [];
-
-  try {
-    const res = await fetch("https://qlusion.com/data.json");
-    if (res.ok) {
-      data.push(...(await res.json()));
-    }
-  } catch (error) {
-    console.error(error);
-  }
+  const data = await prisma.ClubEvent.findMany({
+    include: {
+      category: true,
+      admins: true,
+    },
+  });
 
   return <HomePage data={data} />;
 }

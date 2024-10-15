@@ -15,48 +15,52 @@ import Link from "next/link";
 
 export default function Event({ event }) {
   const { session } = useContext(AppContext);
-  const hasAdminAccess = event.adminUsers?.some(
+  const hasAdminAccess = event.admins?.some(
     (user) => user.email === session.user.email,
   );
 
   return (
     <article className="event">
-      <h3>{event.club_name || "Error Loading Club Name"}</h3>
+      <h3>{event.name || "Error Loading Club Name"}</h3>
       <ul>
-        {event.club_category && <li>{event.club_category}</li>}
-        {event.event_date && (
+        {event.category && <li>{event.category.name}</li>}
+        {event.day && (
           <li>
             <FontAwesomeIcon icon={faCalendar} fixedWidth />
-            {event.event_date}
+            {event.day}
           </li>
         )}
-        {event.event_time && (
+        {event.time && (
           <li>
             <FontAwesomeIcon icon={faClock} fixedWidth />
-            {event.event_time}
+            {event.time}
           </li>
         )}
-        {event.event_description && (
-          <li>
-            <FontAwesomeIcon icon={faCircleInfo} fixedWidth />
-            {event.event_description}
-          </li>
-        )}
-        {event.event_location && (
+        {event.location && (
           <li>
             <FontAwesomeIcon icon={faLocationArrow} fixedWidth />
-            {event.event_location}
+            {event.location}
+          </li>
+        )}
+        {event.admins.length && (
+          <li>
+            <FontAwesomeIcon icon={faCircleInfo} fixedWidth />
+            {event.admins.map((admin) => (
+              <a
+                href={`mailto:${admin.email}`}
+                className="event-contact"
+                key={admin.id}
+              >
+                {admin.email}
+              </a>
+            ))}
           </li>
         )}
       </ul>
       <div className="img-container">
         <Image
-          src={
-            event.club_picture
-              ? "/img/" + event.club_picture
-              : "/img/default.jpg"
-          }
-          alt={event.club_name}
+          src={event.picture ? event.picture : "/img/default.jpg"}
+          alt={event.name}
           width={150}
           height={200}
         />

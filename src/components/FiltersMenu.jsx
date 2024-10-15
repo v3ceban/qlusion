@@ -127,6 +127,7 @@ export default function FiltersMenu() {
       <p>Select the events you want to see</p>
       <form method="POST" id="calendarForm">
         <select
+          aria-label="month"
           name="month"
           value={months[selectedMonth]}
           onChange={handleMonthChange}
@@ -137,7 +138,12 @@ export default function FiltersMenu() {
             </option>
           ))}
         </select>
-        <select name="year" value={selectedYear} onChange={handleYearChange}>
+        <select
+          aria-label="year"
+          name="year"
+          value={selectedYear}
+          onChange={handleYearChange}
+        >
           {years.map((year) => (
             <option key={year} value={year}>
               {year}

@@ -4,6 +4,22 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+### Install Node.js and npm:
+
+To run this project you need to have Node.js and npm installed on your machine.
+You can download Node.js from [here](https://nodejs.org/en/download/).
+Node.js comes bundled with npm.
+
+### Clone the repository:
+
+```bash
+git clone https://github.com/v3ceban/qlusion.git
+```
+
+or use [GitHub Desktop](https://desktop.github.com/download/) app.
+
+or download the repository as a zip file and extract it.
+
 ### Get Environment Variables:
 
 Get `.env` file from project google drive and put it in the root of the project (next to `package.json`).

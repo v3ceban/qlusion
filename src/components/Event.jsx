@@ -15,9 +15,8 @@ import Link from "next/link";
 
 export default function Event({ event }) {
   const { session } = useContext(AppContext);
-  const hasAdminAccess = event.admins?.some(
-    (user) => user.email === session.user.email,
-  );
+  const hasAdminAccess =
+    session && event.admins?.some((user) => user.email === session.user.email);
 
   return (
     <article className="event">

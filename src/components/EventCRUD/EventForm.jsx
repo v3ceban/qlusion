@@ -154,8 +154,8 @@ const EventForm = async ({ event }) => {
           id: event?.id,
         },
       });
-      if (event.picture) {
-        await del(event.picture);
+      if (event?.picture) {
+        await del(event?.picture);
       }
     } catch (error) {
       redirect(`/my_events/edit/${event?.id}?error=Unable to delete event`);
@@ -241,7 +241,7 @@ const EventForm = async ({ event }) => {
         <p>
           Need to add an admin?{" "}
           <a
-            href={`mailto:support@qlusion.com?subject=Add%20an%20admin%20for%20event%20${event.id}`}
+            href={`mailto:support@qlusion.com?subject=Add%20an%20admin%20for%20event%20${event?.id}`}
           >
             Reach out
           </a>

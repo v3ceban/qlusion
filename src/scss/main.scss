@@ -110,8 +110,8 @@ main {
 
         @media screen and (min-width: 450px) {
           display: grid;
-          gap: 10px 0;
-          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+          grid-template-columns: auto 150px;
           grid-template-rows: auto 1fr auto;
           width: 400px;
         }
@@ -151,6 +151,10 @@ main {
 
             &:first-of-type {
               font-size: 14px;
+            }
+
+            &:last-of-type {
+              min-width: 250px;
             }
           }
         }

@@ -68,6 +68,32 @@ Project uses SCSS for styling, you can find global styles in `src/scss` director
 
 Helper functions are located in `src/lib` directory.
 
+## Production
+
+All code that is pushed to the `main` branch is automatically deployed to the production server by Vercel.
+If you are not sure if your code is ready for production, create a pull request and ask for a review.
+
+To create a new branch run:
+
+```bash
+git checkout -b <branch-name>
+```
+
+To push the branch to the repository run:
+
+```bash
+git push origin <branch-name>
+```
+
+To create a pull request go to the [repository pull requests](https://github.com/v3ceban/qlusion/pulls)
+and click on the `New pull request` button. Then select your branch and click
+on the `Create pull request` button.
+
+## Code Style
+
+This project uses ESLint and Prettier for code style and formatting. Please install
+ESLint and Prettier plugins for your code editor.
+
 ## Database operations
 
 ### To update local schema with the current database state run:

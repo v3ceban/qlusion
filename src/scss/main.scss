@@ -1,3 +1,5 @@
+@use "sass:color";
+
 main {
   min-height: 800px;
 
@@ -122,9 +124,9 @@ main {
 
         &:hover {
           box-shadow:
-            -1px -1px 4px darken(#fcfcfc, 5%),
-            2px 2px 4px darken(#ccd0da, 5%);
-          color: darken($text, 5%);
+            -1px -1px 4px color.adjust(#fcfcfc, $lightness: -5%, $space: hsl),
+            2px 2px 4px color.adjust(#ccd0da, $lightness: -5%, $space: hsl);
+          color: color.adjust($text, $lightness: -5%, $space: hsl);
         }
 
         h3 {

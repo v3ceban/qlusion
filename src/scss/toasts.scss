@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .toast {
   text-align: center;
   color: white;
@@ -11,7 +13,7 @@
     background: $red;
 
     &:hover {
-      background: darken($red, 5%);
+      background: color.adjust($red, $lightness: -5%, $space: hsl);
     }
   }
 
@@ -19,7 +21,7 @@
     background: $blue;
 
     &:hover {
-      background: darken($blue, 5%);
+      background: color.adjust($blue, $lightness: -5%, $space: hsl);
     }
   }
 

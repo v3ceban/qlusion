@@ -37,6 +37,11 @@ model ClubCategory {
   clubs ClubEvent[]
 }
 
+model ics_feed {
+  id      String @id @default(cuid())
+  content String
+}
+
 enum Role {
   admin
   clubAdmin

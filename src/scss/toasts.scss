@@ -1,3 +1,5 @@
+@use "variables";
+
 @use "sass:color";
 
 .toast {
@@ -10,18 +12,18 @@
   margin: 1rem 0;
 
   &.error {
-    background: $red;
+    background: variables.$red;
 
     &:hover {
-      background: color.adjust($red, $lightness: -5%, $space: hsl);
+      background: color.adjust(variables.$red, $lightness: -5%, $space: hsl);
     }
   }
 
   &.success {
-    background: $blue;
+    background: variables.$blue;
 
     &:hover {
-      background: color.adjust($blue, $lightness: -5%, $space: hsl);
+      background: color.adjust(variables.$blue, $lightness: -5%, $space: hsl);
     }
   }
 

@@ -1,3 +1,5 @@
+@use "variables";
+
 .categories {
   ul {
     margin: 0 auto 30px;
@@ -12,7 +14,7 @@
       cursor: pointer;
       font-family: "Open Sans", sans-serif;
       font-weight: 600;
-      background-color: $background;
+      background-color: variables.$background;
       background-image: linear-gradient(to bottom right,
           rgba(0, 0, 0, 0.0375),
           rgba(0, 0, 0, 0));
@@ -31,8 +33,8 @@
       &.active {
         opacity: 1;
         font-weight: 600;
-        color: $background;
-        background-color: $blue;
+        color: variables.$background;
+        background-color: variables.$blue;
         background-image: linear-gradient(to bottom,
             rgba(114, 135, 253, 0.4),
             rgba(30, 102, 245, 0.36));

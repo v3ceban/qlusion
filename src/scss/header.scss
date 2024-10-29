@@ -1,3 +1,5 @@
+@use "variables";
+
 @use "sass:color";
 
 header {
@@ -7,7 +9,7 @@ header {
   justify-content: space-between;
   position: relative;
   z-index: 2;
-  background: $background;
+  background: variables.$background;
   margin: 0 0 20px;
   row-gap: 10px;
 
@@ -46,8 +48,8 @@ header {
   }
 
   .menu {
-    color: $text;
-    background-color: $background;
+    color: variables.$text;
+    background-color: variables.$background;
     box-shadow:
       -1px -1px 4px #fcfcfc,
       2px 2px 4px #ccd0da;
@@ -66,7 +68,7 @@ header {
       box-shadow:
         -1px -1px 4px color.adjust(#fcfcfc, $lightness: -5%, $space: hsl),
         2px 2px 4px color.adjust(#ccd0da, $lightness: -5%, $space: hsl);
-      color: color.adjust($text, $lightness: -5%, $space: hsl);
+      color: color.adjust(variables.$text, $lightness: -5%, $space: hsl);
     }
 
     &:last-of-type {

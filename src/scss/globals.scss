@@ -1,9 +1,9 @@
-@import "variables.scss";
+@use "variables.scss";
 
 body {
-  background: $background;
+  background: variables.$background;
   padding: 15px;
-  color: $text;
+  color: variables.$text;
 }
 
 body,
@@ -40,7 +40,7 @@ input[type="password"],
 input[type="text"] {
   display: block;
   width: 100%;
-  background-color: $background;
+  background-color: variables.$background;
   background-image: linear-gradient(to bottom right,
       rgba(0, 0, 0, 0.0375),
       rgba(0, 0, 0, 0));
@@ -49,7 +49,7 @@ input[type="text"] {
   border-radius: 7px;
   text-align: center;
   height: 50px;
-  color: $text;
+  color: variables.$text;
   outline: none;
   transition: box-shadow 0.2s ease-in-out;
   font-size: 16px;
@@ -71,7 +71,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  color: $text;
+  color: variables.$text;
   background-image: linear-gradient(to bottom right,
       rgba(0, 0, 0, 0.0375),
       rgba(0, 0, 0, 0)),
@@ -80,7 +80,7 @@ select {
     left top,
     calc(100% - 10px) calc(50% - 1px);
   background-size: 100%, 12px;
-  background-color: $background;
+  background-color: variables.$background;
   background-repeat: no-repeat;
   border: none;
   border-radius: 4px;
@@ -99,7 +99,7 @@ a.button {
   max-width: 310px;
   cursor: pointer;
   color: white;
-  background-color: $blue;
+  background-color: variables.$blue;
   background-image: linear-gradient(rgba(114, 135, 253, 0.4),
       rgba(30, 102, 245, 0.36));
   font-weight: 700;
@@ -124,7 +124,7 @@ a.button {
   }
 
   &.warning {
-    background-color: $yellow;
+    background-color: variables.$yellow;
     background-image: linear-gradient(rgba(203, 157, 88, 0.4),
         rgba(212, 164, 41, 0.36));
 
@@ -141,7 +141,7 @@ a.button {
 
   &.danger {
     margin-top: 0;
-    background-color: $red;
+    background-color: variables.$red;
     background-image: linear-gradient(rgba(195, 45, 45, 0.4),
         rgba(147, 10, 10, 0.36));
 
@@ -167,8 +167,8 @@ a.button {
 
 .moreinfo {
   display: inline-block;
-  background: $text;
-  color: $background;
+  background: variables.$text;
+  color: variables.$background;
   border-radius: 50%;
   width: 18px;
   height: 18px;

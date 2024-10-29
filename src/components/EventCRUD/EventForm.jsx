@@ -9,6 +9,7 @@ import { fileIsPicture } from "@/lib/utils";
 import Cancel from "./Cancel";
 import Delete from "./Delete";
 import FileUpload from "@/components/FileUpload";
+import { updateCalendar } from "@/lib/calendar";
 
 const fields = ["name", "categoryId", "day", "time", "location", "picture"];
 
@@ -47,6 +48,13 @@ const getDataFromForm = async (formData) => {
 const EventForm = async ({ event }) => {
   const categories = await prisma.ClubCategory.findMany();
 
+  const successRedirect = async (message) => {
+    await updateCalendar();
+    revalidatePath("/my_events/");
+    revalidatePath("/");
+    redirect(`/my_events/?success=${message}`);
+  };
+
   const saveNewEvent = async (formData) => {
     "use server";
 
@@ -83,9 +91,7 @@ const EventForm = async ({ event }) => {
       }
     }
 
-    revalidatePath("/my_events/");
-    revalidatePath("/");
-    redirect("/my_events/?success=Event created");
+    await successRedirect("Event created");
   };
 
   const updateEvent = async (formData) => {
@@ -130,9 +136,7 @@ const EventForm = async ({ event }) => {
       }
     }
 
-    revalidatePath("/my_events/");
-    revalidatePath("/");
-    redirect("/my_events/?success=Event updated");
+    await successRedirect("Event updated");
   };
 
   const deleteEvent = async () => {
@@ -161,9 +165,7 @@ const EventForm = async ({ event }) => {
       redirect(`/my_events/edit/${event?.id}?error=Unable to delete event`);
     }
 
-    revalidatePath("/my_events/");
-    revalidatePath("/");
-    redirect("/my_events/?success=Event deleted");
+    await successRedirect("Event deleted");
   };
 
   return (

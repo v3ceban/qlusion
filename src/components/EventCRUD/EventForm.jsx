@@ -49,6 +49,8 @@ const EventForm = async ({ event }) => {
   const categories = await prisma.ClubCategory.findMany();
 
   const successRedirect = async (message) => {
+    "use server";
+
     await updateCalendar();
     revalidatePath("/my_events/");
     revalidatePath("/");

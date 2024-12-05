@@ -62,9 +62,7 @@ export default function Main({ data }) {
   return (
     <main>
       <section className="hero">
-        <h2>
-          Get included in your college life with <span>Qlusion</span>
-        </h2>
+        <h2>Stay Connected With Qlusion – Community Platform at SCU</h2>
       </section>
       {mainContent === "events" && (
         <nav className="categories">
@@ -96,7 +94,6 @@ export default function Main({ data }) {
             ) : (
               <p>Loading events...</p>
             )}
-            {filtersMenu && <FiltersMenu />}
           </>
         )}
         <iframe
@@ -106,6 +103,7 @@ export default function Main({ data }) {
           width="100%"
           height="675"
         ></iframe>
+        {filtersMenu && <FiltersMenu />}
       </section>
     </main>
   );

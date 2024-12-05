@@ -94,6 +94,7 @@ export default function Main({ data }) {
             ) : (
               <p>Loading events...</p>
             )}
+            {filtersMenu && <FiltersMenu />}
           </>
         )}
         <iframe
@@ -103,7 +104,6 @@ export default function Main({ data }) {
           width="100%"
           height="675"
         ></iframe>
-        {filtersMenu && <FiltersMenu />}
       </section>
     </main>
   );

@@ -50,3 +50,9 @@ footer section:last-of-type {
     grid-column: auto;
   }
 }
+
+@media screen and (max-width: 680px) {
+  footer {
+    display: block;
+  }
+}

@@ -60,10 +60,7 @@ export default function Main({ data }) {
   ];
 
   return (
-    <main>
-      <section className="hero">
-        <h2>Stay Connected With Qlusion – Community Platform at SCU</h2>
-      </section>
+    <>
       {mainContent === "events" && (
         <nav className="categories">
           <ul>
@@ -105,7 +102,7 @@ export default function Main({ data }) {
           height="675"
         ></iframe>
       </section>
-    </main>
+    </>
   );
 }
 
